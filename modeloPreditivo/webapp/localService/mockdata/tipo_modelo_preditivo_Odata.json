@@ -1,0 +1,71 @@
+[{
+	"PREDICTIVE_MODEL_SUBJECT_ID": 1849,
+	"NAME": "Tipo 1",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(1849)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 8588,
+	"NAME": "Tipo 2",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(8588)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 8653,
+	"NAME": "Tipo 3",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(8653)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 6601,
+	"NAME": "Tipo 4",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(6601)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 9019,
+	"NAME": "NAME 5",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(9019)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 563,
+	"NAME": "NAME 6",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(563)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 5550,
+	"NAME": "NAME 7",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(5550)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 9224,
+	"NAME": "NAME 8",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(9224)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 7773,
+	"NAME": "NAME 9",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(7773)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}, {
+	"PREDICTIVE_MODEL_SUBJECT_ID": 1938,
+	"NAME": "NAME 10",
+	"__metadata": {
+		"uri": "tipo_modelo_preditivo_Odata(1938)",
+		"type": "accs.services.tipo_modelo_preditivo_OdataType"
+	}
+}]

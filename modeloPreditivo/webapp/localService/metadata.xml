@@ -1,0 +1,934 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	Version="1.0">
+	<edmx:DataServices
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+		m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="accs.services">
+			<EntityType Name="listaRestricaoODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="RESTRICTION_REASON_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="RESTRICTION_TYPE" Type="Edm.String"
+					Nullable="false" MaxLength="32" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="genRestrictionIdType">
+				<Key>
+					<PropertyRef Name="GEN_RESTRICTION_ID" />
+				</Key>
+				<Property Name="GEN_RESTRICTION_ID" Type="Edm.Int32"
+					Nullable="false" />
+			</EntityType>
+			<EntityType Name="genRestrictionReasonIdType">
+				<Key>
+					<PropertyRef Name="GEN_RESTRICTION_REASON_ID" />
+				</Key>
+				<Property Name="GEN_RESTRICTION_REASON_ID" Type="Edm.Int32"
+					Nullable="false" />
+			</EntityType>
+			<EntityType Name="motivoRestricaoODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_REASON_ID" />
+				</Key>
+				<Property Name="RESTRICTION_REASON_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="RestricaoODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="RESTRICTION_REASON_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="DESCRIPTION" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="RESTRICTION_TYPE" Type="Edm.String"
+					Nullable="false" MaxLength="32" />
+				<Property Name="BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<NavigationProperty Name="RestricaoIndividual"
+					Relationship="accs.services.RestricIndividualType" FromRole="RestricaoODataPrincipal"
+					ToRole="RestricaoIndividualODataDependent" />
+				<NavigationProperty Name="RestricaoCNAE"
+					Relationship="accs.services.RestricCNAEType" FromRole="RestricaoODataPrincipal"
+					ToRole="RestricaoCNAEODataDependent" />
+				<NavigationProperty Name="RestricaoLocalidade"
+					Relationship="accs.services.RestricLocalType" FromRole="RestricaoODataPrincipal"
+					ToRole="RestricaoLocalidadeODataDependent" />
+				<NavigationProperty Name="RestricaoAcao"
+					Relationship="accs.services.RestricAcaoType" FromRole="RestricaoODataPrincipal"
+					ToRole="RestricaoAcaoODataDependent" />
+			</EntityType>
+			<EntityType Name="RestricaoIndividualODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="PARTNER" Type="Edm.String" MaxLength="10" />
+				<Property Name="VKONT" Type="Edm.String" MaxLength="12" />
+				<Property Name="ANLAGE" Type="Edm.String" MaxLength="10" />
+			</EntityType>
+			<EntityType Name="RestricaoCNAEODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="CNAE" Type="Edm.String" Nullable="false"
+					MaxLength="10" />
+			</EntityType>
+			<EntityType Name="RestricaoLocalidadeODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="COUNTRY" Type="Edm.String" Nullable="false"
+					MaxLength="3" />
+				<Property Name="REGION" Type="Edm.String" Nullable="false"
+					MaxLength="3" />
+				<Property Name="REGION_TEXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="CITY_CODE" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="CITY_TEXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="CITYP_CODE" Type="Edm.String" Nullable="false"
+					MaxLength="8" />
+				<Property Name="CITYP_TEXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="STREET_CODE" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="STREET_TEXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="60" />
+			</EntityType>
+			<EntityType Name="RestricaoAcaoODataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="ACTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="BUKRS" Type="Edm.String" Nullable="false"
+					MaxLength="4" />
+				<Property Name="BUTXT" Type="Edm.String" DefaultValue=""
+					MaxLength="25" />
+			</EntityType>
+			<EntityType Name="modeloPreditivoODataType">
+				<Key>
+					<PropertyRef Name="PREDICTIVE_MODEL_ID" />
+					<PropertyRef Name="VALID_FROM" />
+				</Key>
+				<Property Name="PREDICTIVE_MODEL_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="PREDICTIVE_MODEL_SUBJECT_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION" Type="Edm.String" MaxLength="200" />
+				<Property Name="TYPE_MODEL" Type="Edm.Int32" Nullable="false" />
+				<Property Name="PROCEDURE_MODEL" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="SQL_MODEL" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="SQL_VIEW" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="FIELD_KEY" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="FIELD_RESULT" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="TRIGGER_PERIODICITY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+				<Property Name="TRIGGER_MON" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_TUE" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_WED" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_THU" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_FRI" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SAT" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SUN" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_DAY_MONTH" Type="Edm.Int32" />
+				<Property Name="TRIGGER_HOLIDAY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+			</EntityType>
+			<EntityType Name="tipoModeloPreditivoODataType">
+				<Key>
+					<PropertyRef Name="PREDICTIVE_MODEL_SUBJECT_ID" />
+				</Key>
+				<Property Name="PREDICTIVE_MODEL_SUBJECT_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="genPredictiveModelIdType">
+				<Key>
+					<PropertyRef Name="GEN_PREDICTIVE_MODEL_ID" />
+				</Key>
+				<Property Name="GEN_PREDICTIVE_MODEL_ID" Type="Edm.Int32"
+					Nullable="false" />
+			</EntityType>
+			<EntityType Name="atributosProcedureODataType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="COLUMN_NAME" Type="Edm.String" Nullable="false"
+					MaxLength="256" />
+			</EntityType>
+			<EntityType Name="atributoFiltrosPoliticosODataType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="COLUMN_NAME" Type="Edm.String" Nullable="false"
+					MaxLength="256" />
+			</EntityType>
+			<EntityType Name="acaoODataType">
+				<Key>
+					<PropertyRef Name="ACTION_ID" />
+					<PropertyRef Name="VALID_FROM" />
+				</Key>
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="T001_BUKRS" Type="Edm.String" Nullable="false"
+					MaxLength="4" />
+				<Property Name="PREDICTIVE_MODEL_ID" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="CAMP_SELECTION_ID" Type="Edm.String"
+					MaxLength="10" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION" Type="Edm.String" MaxLength="200" />
+				<Property Name="TRIGGER_PERIODICITY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+				<Property Name="TRIGGER_MON" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_TUE" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_WED" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_THU" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_FRI" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SAT" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SUN" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_DAY_MONTH" Type="Edm.Int32" />
+				<Property Name="TRIGGER_HOLIDAY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+				<Property Name="IF_CAMPAIGN" Type="Edm.Int32" Nullable="false" />
+				<Property Name="IF_AUTO_SELECTION" Type="Edm.Int32"
+					Nullable="false" />
+				<Property Name="EXECUTION_ORDER" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALUE_DISTRIBUTION" Type="Edm.Decimal"
+					Nullable="false" Precision="16" Scale="6" />
+				<Property Name="USR01_BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+			</EntityType>
+			<EntityType Name="Filtro_politico_OdataType">
+				<Key>
+					<PropertyRef Name="ACTION_ID" />
+					<PropertyRef Name="VALID_FROM" />
+				</Key>
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="DAYS_LAST_ACTION" Type="Edm.Int32" />
+				<Property Name="RULE_WHERE" Type="Edm.String" MaxLength="4000" />
+				<Property Name="RULE_ORDER" Type="Edm.String" MaxLength="4000" />
+				<Property Name="BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="RANK_FIELD_KEY" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="RANK_FIELD_COUNTER" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="RANK_LIMITE" Type="Edm.Int32" />
+				<Property Name="RANK_FIELD_ORDER" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="RANK_FIELD_ORDER_OPERATOR" Type="Edm.String"
+					MaxLength="200" />
+			</EntityType>
+			<EntityType Name="Servico_campo_OdataType">
+				<Key>
+					<PropertyRef Name="SERVICE_TEAM_ID" />
+				</Key>
+				<Property Name="SERVICE_TEAM_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION" Type="Edm.String" MaxLength="200" />
+				<Property Name="IF_OWN" Type="Edm.String" Nullable="false"
+					MaxLength="1" />
+				<Property Name="IF_ACTIVE" Type="Edm.String" Nullable="false"
+					MaxLength="1" />
+				<Property Name="BASE_LATITUDE" Type="Edm.Decimal"
+					Precision="10" Scale="8" />
+				<Property Name="BASE_LONGITUDE" Type="Edm.Decimal"
+					Precision="10" Scale="8" />
+				<Property Name="RADIUS_MIN" Type="Edm.Int32" />
+				<Property Name="RADIUS_MAX" Type="Edm.Int32" />
+				<Property Name="RADIUS_INCREMENT" Type="Edm.Int32" />
+				<Property Name="TRIGGER_PERIODICITY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+				<Property Name="TRIGGER_MON" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_TUE" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_WED" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_THU" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_FRI" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SAT" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_SUN" Type="Edm.String" MaxLength="1" />
+				<Property Name="TRIGGER_DAY_MONTH" Type="Edm.Int32" />
+				<Property Name="TRIGGER_HOLIDAY" Type="Edm.String"
+					Nullable="false" MaxLength="1" />
+				<Property Name="EXECUTION_ORDER" Type="Edm.Int32" />
+				<Property Name="QTD_CENTROID" Type="Edm.Int32" Nullable="false" />
+			</EntityType>
+			<EntityType Name="Tipo_servico_OdataType">
+				<Key>
+					<PropertyRef Name="SERVICE_TEAM_ID" />
+					<PropertyRef Name="INSTALLATION_TYPE_ID" />
+				</Key>
+				<Property Name="SERVICE_TEAM_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="INSTALLATION_TYPE_ID" Type="Edm.String"
+					Nullable="false" MaxLength="10" />
+			</EntityType>
+			<EntityType Name="Distribuicao_OdataType">
+				<Key>
+					<PropertyRef Name="DISTRIBUTION_ID" />
+					<PropertyRef Name="VALID_FROM" />
+				</Key>
+				<Property Name="DISTRIBUTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="ACTION_ID" Type="Edm.Int32" />
+				<Property Name="TEAM_SERVICE_ID" Type="Edm.Int32" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="COUNTRY" Type="Edm.String" Nullable="false"
+					MaxLength="3" />
+				<Property Name="REGION" Type="Edm.String" Nullable="false"
+					MaxLength="3" />
+				<Property Name="CITY_CODE" Type="Edm.String" MaxLength="12" />
+				<Property Name="CITYP_CODE" Type="Edm.String" MaxLength="8" />
+				<Property Name="VALUE" Type="Edm.Decimal" Nullable="false"
+					Precision="16" Scale="6" />
+				<Property Name="USR01_BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+			</EntityType>
+			<EntityType Name="Canal_Notificacao_OdataType">
+				<Key>
+					<PropertyRef Name="CHANNEL_ID" />
+				</Key>
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION" Type="Edm.String" MaxLength="100" />
+				<Property Name="INTEGRATION_CCS" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="INTEGRATION_FILE_DELIMITER" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="LAYOUT_ID" Type="Edm.Int32" />
+				<Property Name="CAMP_ACTIVITY_ID" Type="Edm.Int32" />
+				<Property Name="BUDGET_COST_UNIT" Type="Edm.Decimal"
+					Precision="16" Scale="6" />
+				<Property Name="BUDGET_PROVIDE_MONTH" Type="Edm.Int32" />
+				<Property Name="BUDGET_PROVIDE_YEAR" Type="Edm.Int32" />
+				<Property Name="BUDGET_METHOD_SENDER" Type="Edm.Int32" />
+				<Property Name="BUDGET_METHOD_SEND_QTD" Type="Edm.Int32" />
+				<Property Name="BUDGET_METHOD_COUNT" Type="Edm.Int32" />
+				<Property Name="EXECUTION_ORDER" Type="Edm.Int32" Nullable="false" />
+				<Property Name="USR01_BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="ZBUKRS_NEG" Type="Edm.String" MaxLength="4" />
+				<Property Name="ZMODELO" Type="Edm.String" MaxLength="4" />
+			</EntityType>
+			<EntityType Name="Programacao_canal_OdataType">
+				<Key>
+					<PropertyRef Name="CHANNEL_ID" />
+					<PropertyRef Name="DATE" />
+				</Key>
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="DATE" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="AVAILABLE_DAY" Type="Edm.Int32" Nullable="false" />
+			</EntityType>
+			<EntityType Name="genLayoutIDType">
+				<Key>
+					<PropertyRef Name="GEN_LAYOUT_ID" />
+				</Key>
+				<Property Name="GEN_LAYOUT_ID" Type="Edm.Int32" Nullable="false" />
+			</EntityType>
+			<EntityType Name="layoutODataType">
+				<Key>
+					<PropertyRef Name="LAYOUT_ID" />
+				</Key>
+				<Property Name="LAYOUT_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" MaxLength="100" />
+				<NavigationProperty Name="camposLayoutOData"
+					Relationship="accs.services.layoutFieldsType" FromRole="layoutODataPrincipal"
+					ToRole="layoutFieldsODataDependent" />
+			</EntityType>
+			<EntityType Name="layoutFieldsODataType">
+				<Key>
+					<PropertyRef Name="LAYOUT_ID" />
+					<PropertyRef Name="LAYOUT_FIELDS_ID" />
+				</Key>
+				<Property Name="LAYOUT_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="MASK_FORMULA" Type="Edm.String" MaxLength="100" />
+				<Property Name="COLLUMN_NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="LAYOUT_FIELDS_ID" Type="Edm.Int32"
+					Nullable="false" />
+			</EntityType>
+			<EntityType Name="Acoes_realizadas_OdataType">
+				<Key>
+					<PropertyRef Name="ACTION_ID" />
+					<PropertyRef Name="DATE_RELEASE" />
+					<PropertyRef Name="VKONT" />
+					<PropertyRef Name="ZDOCUMENTO" />
+				</Key>
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="DATE_RELEASE" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VKONT" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="ZDOCUMENTO" Type="Edm.String" Nullable="false"
+					MaxLength="16" />
+				<Property Name="SET_TEAM_SERVICE_ID" Type="Edm.Int32" />
+				<Property Name="FAEDN" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="ANLAGE" Type="Edm.String" MaxLength="10" />
+				<Property Name="PARTNER" Type="Edm.String" MaxLength="10" />
+				<Property Name="BLART" Type="Edm.String" Nullable="false"
+					MaxLength="2" />
+				<Property Name="BETRW" Type="Edm.Decimal" Nullable="false"
+					Precision="16" Scale="6" />
+				<Property Name="INSERTED_HAND" Type="Edm.String" Nullable="false"
+					MaxLength="1" />
+				<Property Name="BNAME" Type="Edm.String" MaxLength="12" />
+				<Property Name="STATUS" Type="Edm.Int32" Nullable="false" />
+			</EntityType>
+			<EntityType Name="Tipo_instalacao_OdataType">
+				<Key>
+					<PropertyRef Name="INSTALLATION_TYPE_ID" />
+					<PropertyRef Name="INSTALLATION_TYPE" />
+				</Key>
+				<Property Name="INSTALLATION_TYPE_ID" Type="Edm.String"
+					Nullable="false" DefaultValue="" MaxLength="10" />
+				<Property Name="INSTALLATION_TYPE" Type="Edm.String"
+					Nullable="false" DefaultValue="" MaxLength="60" />
+			</EntityType>
+			<EntityType Name="Campo_selecao_OdataType">
+				<Key>
+					<PropertyRef Name="CAMP_SELECTION_ID" />
+					<PropertyRef Name="CAMP_SELECTION" />
+				</Key>
+				<Property Name="CAMP_SELECTION_ID" Type="Edm.String"
+					Nullable="false" DefaultValue="" MaxLength="10" />
+				<Property Name="CAMP_SELECTION" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="60" />
+			</EntityType>
+			<EntityType Name="Restricao_local_acaoOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="ACTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="PAIS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="15" />
+				<Property Name="UF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="BAIRRO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="RUA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="60" />
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="NAME_ACTION" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_ACTION" Type="Edm.String"
+					MaxLength="200" />
+			</EntityType>
+			<EntityType Name="Restricao_local_canalOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="CHANNEL_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME" Type="Edm.String" Nullable="false"
+					MaxLength="12" />
+				<Property Name="PAIS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="15" />
+				<Property Name="UF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="BAIRRO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="RUA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="60" />
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_CHANNEL" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="Restricao_cnae_canalOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="CHANNEL_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="CNAE" Type="Edm.String" Nullable="false"
+					MaxLength="10" />
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME_RESTRICTION" Type="Edm.String"
+					Nullable="false" MaxLength="12" />
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME_CHANNEL" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_CHANNEL" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="Restricao_cnae_acaoOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="ACTION_ID" />
+				</Key>
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="CNAE" Type="Edm.String" Nullable="false"
+					MaxLength="10" />
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME_RESTRICTION" Type="Edm.String"
+					Nullable="false" MaxLength="12" />
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="NAME_ACTION" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_ACTION" Type="Edm.String"
+					MaxLength="200" />
+			</EntityType>
+			<EntityType Name="Restricao_empresa_canalOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="CHANNEL_ID" />
+				</Key>
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME_RESTRICTION" Type="Edm.String"
+					Nullable="false" MaxLength="12" />
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="PARCEIRO" Type="Edm.String" MaxLength="10" />
+				<Property Name="CODIGO_CONTRATO" Type="Edm.String"
+					MaxLength="12" />
+				<Property Name="CODIGO_INSTALACAO" Type="Edm.String"
+					MaxLength="10" />
+				<Property Name="CHANNEL_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="NAME_CHANNEL" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_CHANNEL" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="Restricao_empresa_acaoOdataType">
+				<Key>
+					<PropertyRef Name="RESTRICTION_ID" />
+					<PropertyRef Name="ACTION_ID" />
+				</Key>
+				<Property Name="DESCRIPTION_RESTRICTION" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="BNAME_RESTRICTION" Type="Edm.String"
+					Nullable="false" MaxLength="12" />
+				<Property Name="RESTRICTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="PARCEIRO" Type="Edm.String" MaxLength="10" />
+				<Property Name="CODIGO_CONTRATO" Type="Edm.String"
+					MaxLength="12" />
+				<Property Name="CODIGO_INSTALACAO" Type="Edm.String"
+					MaxLength="10" />
+				<Property Name="ACTION_ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="VALID_UNTIL" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="NAME_ACTION" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="DESCRIPTION_ACTION" Type="Edm.String"
+					MaxLength="200" />
+			</EntityType>
+			<EntityType Name="logradouroODataType">
+				<Key>
+					<PropertyRef Name="CODIGO_LOGRADOURO" />
+				</Key>
+				<Property Name="CODIGO_CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="12" />
+				<Property Name="CODIGO_BAIRRO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="8" />
+				<Property Name="CODIGO_LOGRADOURO" Type="Edm.String"
+					Nullable="false" DefaultValue="" MaxLength="12" />
+				<Property Name="LOGRADOURO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="60" />
+			</EntityType>
+			<EntityType Name="bairroODataType">
+				<Key>
+					<PropertyRef Name="CODIGO_BAIRRO" />
+				</Key>
+				<Property Name="CODIGO_BAIRRO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="8" />
+				<Property Name="BAIRRO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="CODIGO_CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="12" />
+			</EntityType>
+			<EntityType Name="cidadeODataType">
+				<Key>
+					<PropertyRef Name="CODIGO_CIDADE" />
+				</Key>
+				<Property Name="CODIGO_CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="12" />
+				<Property Name="CIDADE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="40" />
+				<Property Name="UF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+			</EntityType>
+			<EntityType Name="ufODataType">
+				<Key>
+					<PropertyRef Name="CODIGO_UF" />
+				</Key>
+				<Property Name="CODIGO_UF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="UF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="20" />
+			</EntityType>
+			<EntityType Name="cnaeODataType">
+				<Key>
+					<PropertyRef Name="IND_SECTOR" />
+				</Key>
+				<Property Name="IND_SECTOR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="10" />
+				<Property Name="TEXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="100" />
+			</EntityType>
+			<EntityType Name="empresaODataType">
+				<Key>
+					<PropertyRef Name="MANDT" />
+					<PropertyRef Name="BUKRS" />
+				</Key>
+				<Property Name="MANDT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="BUKRS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="BUTXT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="25" />
+				<Property Name="ORT01" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="25" />
+				<Property Name="LAND1" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="3" />
+				<Property Name="WAERS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="5" />
+				<Property Name="SPRAS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="KTOPL" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="WAABW" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="PERIV" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="KOKFI" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="RCOMP" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="6" />
+				<Property Name="ADRNR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="10" />
+				<Property Name="STCEG" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="20" />
+				<Property Name="FIKRS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XFMCO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XFMCB" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XFMCA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="TXJCD" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="15" />
+				<Property Name="FMHRDATE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="8" />
+				<Property Name="BUVAR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="FDBUK" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XFDIS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XVALV" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XSKFN" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="KKBER" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XMWSN" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="MREGL" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XGSBE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XGJRV" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XKDFT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XPROD" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XEINK" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XJVAA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XVVWA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XSLTA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XFDMM" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XFDSD" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XEXTB" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="EBUKR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="KTOP2" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="UMKRS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="BUKRS_GLOB" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="6" />
+				<Property Name="FSTVA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="OPVAR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XCOVR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="TXKRS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="WFVAR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="XBBBF" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XBBBE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XBBBA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XBBKO" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XSTDT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="MWSKV" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="MWSKA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="IMPDA" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XNEGP" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XKKBI" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="WT_NEWWT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="PP_PDATE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="INFMT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="FSTVARE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="KOPIM" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="DKWEG" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="OFFSACCT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="BAPOVAR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="XCOS" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XCESSION" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XSPLT" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="SURCCM" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="DTPROV" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="DTAMTC" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="DTTAXC" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="DTTDSP" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="2" />
+				<Property Name="DTAXR" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="4" />
+				<Property Name="FM_DERIVE_ACC" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+				<Property Name="XVATDATE" Type="Edm.String" Nullable="false"
+					DefaultValue="" MaxLength="1" />
+			</EntityType>
+			<Association Name="RestricIndividualType">
+				<End Type="accs.services.RestricaoODataType" Role="RestricaoODataPrincipal"
+					Multiplicity="1" />
+				<End Type="accs.services.RestricaoIndividualODataType" Role="RestricaoIndividualODataDependent"
+					Multiplicity="1" />
+				<ReferentialConstraint>
+					<Principal Role="RestricaoODataPrincipal">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Principal>
+					<Dependent Role="RestricaoIndividualODataDependent">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="RestricCNAEType">
+				<End Type="accs.services.RestricaoODataType" Role="RestricaoODataPrincipal"
+					Multiplicity="1" />
+				<End Type="accs.services.RestricaoCNAEODataType" Role="RestricaoCNAEODataDependent"
+					Multiplicity="1" />
+				<ReferentialConstraint>
+					<Principal Role="RestricaoODataPrincipal">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Principal>
+					<Dependent Role="RestricaoCNAEODataDependent">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="RestricLocalType">
+				<End Type="accs.services.RestricaoODataType" Role="RestricaoODataPrincipal"
+					Multiplicity="1" />
+				<End Type="accs.services.RestricaoLocalidadeODataType" Role="RestricaoLocalidadeODataDependent"
+					Multiplicity="1" />
+				<ReferentialConstraint>
+					<Principal Role="RestricaoODataPrincipal">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Principal>
+					<Dependent Role="RestricaoLocalidadeODataDependent">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="RestricAcaoType">
+				<End Type="accs.services.RestricaoODataType" Role="RestricaoODataPrincipal"
+					Multiplicity="1" />
+				<End Type="accs.services.RestricaoAcaoODataType" Role="RestricaoAcaoODataDependent"
+					Multiplicity="*" />
+				<ReferentialConstraint>
+					<Principal Role="RestricaoODataPrincipal">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Principal>
+					<Dependent Role="RestricaoAcaoODataDependent">
+						<PropertyRef Name="RESTRICTION_ID" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="layoutFieldsType">
+				<End Type="accs.services.layoutODataType" Role="layoutODataPrincipal"
+					Multiplicity="1" />
+				<End Type="accs.services.layoutFieldsODataType" Role="layoutFieldsODataDependent"
+					Multiplicity="*" />
+				<ReferentialConstraint>
+					<Principal Role="layoutODataPrincipal">
+						<PropertyRef Name="LAYOUT_ID" />
+					</Principal>
+					<Dependent Role="layoutFieldsODataDependent">
+						<PropertyRef Name="LAYOUT_ID" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="service"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="listaRestricaoOData" EntityType="accs.services.listaRestricaoODataType" />
+				<EntitySet Name="genRestrictionId" EntityType="accs.services.genRestrictionIdType" />
+				<EntitySet Name="genRestrictionReasonId" EntityType="accs.services.genRestrictionReasonIdType" />
+				<EntitySet Name="motivoRestricaoOData" EntityType="accs.services.motivoRestricaoODataType" />
+				<EntitySet Name="RestricaoOData" EntityType="accs.services.RestricaoODataType" />
+				<EntitySet Name="RestricaoIndividualOData"
+					EntityType="accs.services.RestricaoIndividualODataType" />
+				<EntitySet Name="RestricaoCNAEOData" EntityType="accs.services.RestricaoCNAEODataType" />
+				<EntitySet Name="RestricaoLocalidadeOData"
+					EntityType="accs.services.RestricaoLocalidadeODataType" />
+				<EntitySet Name="RestricaoAcaoOData" EntityType="accs.services.RestricaoAcaoODataType" />
+				<EntitySet Name="modeloPreditivoOData" EntityType="accs.services.modeloPreditivoODataType" />
+				<EntitySet Name="tipoModeloPreditivoOData"
+					EntityType="accs.services.tipoModeloPreditivoODataType" />
+				<EntitySet Name="genPredictiveModelId" EntityType="accs.services.genPredictiveModelIdType" />
+				<EntitySet Name="atributosProcedureOData"
+					EntityType="accs.services.atributosProcedureODataType" />
+				<EntitySet Name="atributoFiltrosPoliticosOData"
+					EntityType="accs.services.atributoFiltrosPoliticosODataType" />
+				<EntitySet Name="acaoOData" EntityType="accs.services.acaoODataType" />
+				<EntitySet Name="Filtro_politico_Odata" EntityType="accs.services.Filtro_politico_OdataType" />
+				<EntitySet Name="Servico_campo_Odata" EntityType="accs.services.Servico_campo_OdataType" />
+				<EntitySet Name="Tipo_servico_Odata" EntityType="accs.services.Tipo_servico_OdataType" />
+				<EntitySet Name="Distribuicao_Odata" EntityType="accs.services.Distribuicao_OdataType" />
+				<EntitySet Name="Canal_Notificacao_Odata"
+					EntityType="accs.services.Canal_Notificacao_OdataType" />
+				<EntitySet Name="Programacao_canal_Odata"
+					EntityType="accs.services.Programacao_canal_OdataType" />
+				<EntitySet Name="genLayoutID" EntityType="accs.services.genLayoutIDType" />
+				<EntitySet Name="layoutOData" EntityType="accs.services.layoutODataType" />
+				<EntitySet Name="layoutFieldsOData" EntityType="accs.services.layoutFieldsODataType" />
+				<EntitySet Name="Acoes_realizadas_Odata" EntityType="accs.services.Acoes_realizadas_OdataType" />
+				<EntitySet Name="Tipo_instalacao_Odata" EntityType="accs.services.Tipo_instalacao_OdataType" />
+				<EntitySet Name="Campo_selecao_Odata" EntityType="accs.services.Campo_selecao_OdataType" />
+				<EntitySet Name="Restricao_local_acaoOdata"
+					EntityType="accs.services.Restricao_local_acaoOdataType" />
+				<EntitySet Name="Restricao_local_canalOdata"
+					EntityType="accs.services.Restricao_local_canalOdataType" />
+				<EntitySet Name="Restricao_cnae_canalOdata"
+					EntityType="accs.services.Restricao_cnae_canalOdataType" />
+				<EntitySet Name="Restricao_cnae_acaoOdata"
+					EntityType="accs.services.Restricao_cnae_acaoOdataType" />
+				<EntitySet Name="Restricao_empresa_canalOdata"
+					EntityType="accs.services.Restricao_empresa_canalOdataType" />
+				<EntitySet Name="Restricao_empresa_acaoOdata"
+					EntityType="accs.services.Restricao_empresa_acaoOdataType" />
+				<EntitySet Name="logradouroOData" EntityType="accs.services.logradouroODataType" />
+				<EntitySet Name="bairroOData" EntityType="accs.services.bairroODataType" />
+				<EntitySet Name="cidadeOData" EntityType="accs.services.cidadeODataType" />
+				<EntitySet Name="ufOData" EntityType="accs.services.ufODataType" />
+				<EntitySet Name="cnaeOData" EntityType="accs.services.cnaeODataType" />
+				<EntitySet Name="empresaOData" EntityType="accs.services.empresaODataType" />
+				<AssociationSet Name="RestricIndividual"
+					Association="accs.services.RestricIndividualType">
+					<End Role="RestricaoODataPrincipal" EntitySet="RestricaoOData" />
+					<End Role="RestricaoIndividualODataDependent" EntitySet="RestricaoIndividualOData" />
+				</AssociationSet>
+				<AssociationSet Name="RestricCNAE" Association="accs.services.RestricCNAEType">
+					<End Role="RestricaoODataPrincipal" EntitySet="RestricaoOData" />
+					<End Role="RestricaoCNAEODataDependent" EntitySet="RestricaoCNAEOData" />
+				</AssociationSet>
+				<AssociationSet Name="RestricLocal" Association="accs.services.RestricLocalType">
+					<End Role="RestricaoODataPrincipal" EntitySet="RestricaoOData" />
+					<End Role="RestricaoLocalidadeODataDependent" EntitySet="RestricaoLocalidadeOData" />
+				</AssociationSet>
+				<AssociationSet Name="RestricAcao" Association="accs.services.RestricAcaoType">
+					<End Role="RestricaoODataPrincipal" EntitySet="RestricaoOData" />
+					<End Role="RestricaoAcaoODataDependent" EntitySet="RestricaoAcaoOData" />
+				</AssociationSet>
+				<AssociationSet Name="layoutFields" Association="accs.services.layoutFieldsType">
+					<End Role="layoutODataPrincipal" EntitySet="layoutOData" />
+					<End Role="layoutFieldsODataDependent" EntitySet="layoutFieldsOData" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

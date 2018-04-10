@@ -1,0 +1,241 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="com.cpfl.modelos.controller.Object">
+	<semantic:FullscreenPage id="page2" navButtonPress="onNavBack" showNavButton="true" title="{objectView>/title}" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Panel id="__panel0" headerText="{i18n>subTitle1}" class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<HBox width="100%" id="__hbox0" renderType="Bare" alignItems="Start">
+						<items>
+							<f:Form id="FormToolbar" editable="true" adjustLabelSpan="true" columnsM="2" width="100%">
+								<f:layout>
+									<f:ResponsiveGridLayout />
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer title="{i18n>blockTitle1}" id="__container8">
+										<f:formElements>
+											<f:FormElement label ="{i18n>block1IDModel}">
+												<f:fields>
+													<Input value="{PREDICTIVE_MODEL_ID}" width="300px" id="inIDModelo" fieldWidth="100%" textAlign="Begin" textDirection="LTR" editable="false" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>block1NameModel}">
+												<f:fields>													
+													<Input required="true" value="{NAME}" width="257px" id="inName" fieldWidth="100%" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>tableNameColumnTitle2}">
+												<f:fields>
+													<ActionSelect id="comboTipoModel" value="List Item 1" selectedKey="{PREDICTIVE_MODEL_SUBJECT_ID}" width="230px" textAlign="Begin" textDirection="LTR" items="{ path: '/tipoModeloPreditivoOData' }" enabled="{objectView>/formEditable}">
+														<items>
+															<core:ListItem key="{PREDICTIVE_MODEL_SUBJECT_ID}" text="{NAME}" />
+														</items>
+													</ActionSelect>
+													<Button text="{i18n>new}" width="70px" id="__button9" visible="{objectView>/formEditable}" press="onNewTypeModel" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>block1ValidFrom}">
+												<f:fields>
+													<DatePicker id="dtValidFrom" value="{path: 'VALID_FROM',  type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" width="300px" displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy" editable="false" textAlign="Left" textDirection="LTR" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>block1ValidTo}">
+												<f:fields>
+													<DatePicker id="dtValidTo" value="{path: 'VALID_UNTIL',  type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" width="300px" displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy" editable="false" textAlign="Left" textDirection="LTR" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>block1TypeModelPA}">
+												<f:fields>
+													<RadioButton fieldGroupIds="RB1" groupName="GroupInputListItem1" selected="{objectView>/rbauto}" text="{i18n>block1Auto}" editable="{objectView>/formEditable}" select="onAuto" />
+													<RadioButton fieldGroupIds="RB1" groupName="GroupInputListItem1" selected="{objectView>/rbexper}" text="{i18n>block1Expert}" editable="{objectView>/formEditable}" select="onExpert" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>block1Description}">
+												<f:fields>
+													<TextArea id="inDesc" value="{DESCRIPTION}" height="200%" textAlign="Begin" textDirection="LTR" width="350px" wrapping="Soft" rows="4" editable="{objectView>/formEditable}" />
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer title="{i18n>blockTitle2}" id="__container2">
+										<f:FormElement>
+											<f:fields>
+												<RadioButton id="rbDay" fieldGroupIds="RB2" groupName="GroupInputListItem2" selected="{objectView>/rbDay}" text="{i18n>dayly}" editable="{objectView>/formEditable}" select="onDayly" />
+												<CheckBox id="cbDSat" selected="{objectView>/chkDSat}" text="{i18n>sat}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkDayVisible}" />
+												<CheckBox id="cbDSun" selected="{objectView>/chkDSun}" text="{i18n>sun}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkDayVisible}" />
+												<CheckBox id="cbDHol" selected="{objectView>/chkDHol}" text="{i18n>holiday}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkDayVisible}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<RadioButton id="rbWeek" fieldGroupIds="RB2" groupName="GroupInputListItem2" selected="{objectView>/rbWeek}" text="{i18n>weekly}" editable="{objectView>/formEditable}" select="onWeekly" />
+												<CheckBox id="cbWSun" selected="{objectView>/chkWSun}" text="{i18n>sun}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+												<CheckBox id="cbWMon" selected="{objectView>/chkWMon}" text="{i18n>mon}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+												<CheckBox id="cbWTue" selected="{objectView>/chkWTue}" text="{i18n>tue}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<Label text="" />
+												<CheckBox id="cbWWed" selected="{objectView>/chkWWed}" text="{i18n>wed}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+												<CheckBox id="cbWThu" selected="{objectView>/chkWThu}" text="{i18n>thu}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+												<CheckBox id="cbWFri" selected="{objectView>/chkWFri}" text="{i18n>fri}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<Label text="" />
+												<CheckBox id="cbWSat" selected="{objectView>/chkWSat}" text="{i18n>sat}" textAlign="Left" textDirection="RTL" editable="{objectView>/formEditable}" visible="{objectView>/chkWeekVisible}" />
+												<Label text="" />
+												<Label text="" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<RadioButton id="rbMonth" fieldGroupIds="RB2" groupName="GroupInputListItem2" selected="{objectView>/rbMonth}" text="{i18n>monthly}" editable="{objectView>/formEditable}" select="onMonthly" />
+												<ComboBox id="inDayMonth" value="{TRIGGER_DAY_MONTH}" selectedKey="{TRIGGER_DAY_MONTH}" editable="{objectView>/chkMonthEditable}" visible="{objectView>/chkMonthVisible}" width="100px" textAlign="Begin" textDirection="LTR">
+													<items>
+														<core:ListItem key="1" text="1" />
+														<core:ListItem key="2" text="2" />
+														<core:ListItem key="3" text="3" />
+														<core:ListItem key="4" text="4" />
+														<core:ListItem key="5" text="5" />
+														<core:ListItem key="6" text="6" />
+														<core:ListItem key="7" text="7" />
+														<core:ListItem key="8" text="8" />
+														<core:ListItem key="9" text="9" />
+														<core:ListItem key="10" text="10" />
+														<core:ListItem key="11" text="11" />
+														<core:ListItem key="12" text="12" />
+														<core:ListItem key="13" text="13" />
+														<core:ListItem key="14" text="14" />
+														<core:ListItem key="15" text="15" />
+														<core:ListItem key="16" text="16" />
+														<core:ListItem key="17" text="17" />
+														<core:ListItem key="18" text="18" />
+														<core:ListItem key="19" text="19" />
+														<core:ListItem key="20" text="20" />
+														<core:ListItem key="21" text="21" />
+														<core:ListItem key="21" text="22" />
+														<core:ListItem key="23" text="23" />
+														<core:ListItem key="24" text="24" />
+														<core:ListItem key="25" text="25" />
+														<core:ListItem key="26" text="26" />
+														<core:ListItem key="27" text="27" />
+														<core:ListItem key="28" text="28" />
+<!-- 														<core:ListItem key="29" text="29" />
+														<core:ListItem key="30" text="30" />
+														<core:ListItem key="31" text="31" /> -->
+													</items>
+												</ComboBox>
+												<Label text="" />
+												<Label text="" />
+											</f:fields>
+										</f:FormElement>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+						</items>
+					</HBox>
+				</content>
+			</Panel>
+			<Panel id="__panel3" headerText="{i18n>subTitle2}" class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<f:Form id="FormToolbar2" editable="true" adjustLabelSpan="true" columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer title="{i18n>blockTitle3}" id="__container9">
+								<f:formElements>
+									<f:FormElement label="{i18n>condAbrang}">
+									<!--  value="{SQL_VIEW}" -->
+										<f:fields> 
+											<TextArea required="true" id="inAbrang" height="500%" textAlign="Begin"  value="{SQL_VIEW}" textDirection="LTR" width="470px" wrapping="Soft" rows="4" editable="{objectView>/areaAbrang}" placeholder="{i18n>textoDefaulArquivo}"/>
+											<u:FileUploader id="fileUpAbrang" name="fileAbrang" uploadUrl="" width="150px" fileType="txt" change="onLoadFileCond" visible="{objectView>/formEditable}" buttonText="{i18n>loadFile}" buttonOnly="true" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="FormToolbar3" editable="true" adjustLabelSpan="true" columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer title="{i18n>blockTitle4}" id="__container10" adjustLabelSpan="true" columnsM="2" width="100%" visible="{objectView>/autoVisible}">
+								<f:formElements>
+									<f:FormElement label="{i18n>sqlModel}">
+									<!--  value="{SQL_MODEL}" -->
+										<f:fields>
+											<TextArea required="true" id="inSQL" height="400%" textAlign="Begin" value="{SQL_MODEL}" textDirection="LTR" width="470px" wrapping="Soft" rows="4" editable="{objectView>/areaSQL}" placeholder="{i18n>textoDefaulArquivo}"/>
+											<u:FileUploader id="fileUpSQL" name="fileSQL" uploadUrl="" width="150px" fileType="txt" change="onLoadFileSQL" visible="{objectView>/formEditable}" buttonText="{i18n>loadFile}" buttonOnly="true" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>atribKey}">
+										<f:fields>
+											<!-- <MultiInput id="inAKey" width="300px" maxTokens="1" value="{FIELD_KEY}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" showValueHelp="true" valueHelpRequest="onF4fieldkey" /> -->
+											<Input required="true" id="inAKey" width="300px" value="{FIELD_KEY}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" />											
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>atriResult}">
+										<f:fields>
+											<!-- <MultiInput id="inAResult" width="300px" maxTokens="1" value="{FIELD_RESULT}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" showValueHelp="true" valueHelpRequest="onF4fieldresult" /> -->
+											<Input required="true" id="inAResult" width="300px" value="{FIELD_RESULT}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="FormToolbar5" editable="true" adjustLabelSpan="true" columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container12" adjustLabelSpan="true" columnsM="2" width="100%" visible="{objectView>/expertVisible}">
+								<f:formElements>
+									<f:FormElement label="{i18n>procedure}">
+										<f:fields>
+											<MultiInput required="true" id="inProcedure" width="475px" maxTokens="1" value="{PROCEDURE_MODEL}" enableMultiLineMode="false" textAlign="Begin" textDirection="LTR" showValueHelp="true" editable="{objectView>/formEditable}" valueHelpRequest="onF4Procedure" />
+											<Button text="{i18n>verify}" width="100px" id="__button8" visible="{objectView>/formEditable}" press="onVerify" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>atribKey}">
+										<f:fields>
+											<MultiInput required="true" id="inEKey" width="300px" maxTokens="1" value="{FIELD_KEY}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" showValueHelp="true" valueHelpRequest="onF4ProcKey" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>atriResult}">
+										<f:fields>
+											<MultiInput required="true" id="inEResult" width="300px" maxTokens="1" value="{FIELD_RESULT}" textAlign="Begin" textDirection="LTR" editable="{objectView>/formEditable}" showValueHelp="true" valueHelpRequest="onF4ProcResult" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+		</semantic:content>
+		<!--  BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+	</semantic:FullscreenPage>
+</mvc:View>

@@ -1,0 +1,110 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="com.cpfl.modelos.controller.Worklist">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" title="{i18n>worklistViewTitle}" showSubHeader="false">
+		<semantic:content>
+			<Panel id="filterBox" class="sapUiResponsiveMargin" width="95%" visible="true">
+				<content>
+					<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1" class="sapUiSmallMargin">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{i18n>tableNameColumnTitle2}">
+										<f:fields>
+											<ComboBox value="List Item 1" selectedKey="{PREDICTIVE_MODEL_SUBJECT_ID}" id="idFiltroTipoModelo" width="200px" textAlign="Begin" textDirection="LTR" items="{ path: '/tipoModeloPreditivoOData' }">
+												<items>
+													<core:ListItem key="{PREDICTIVE_MODEL_SUBJECT_ID}" text="{NAME}" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>tableNameColumnTitle3}">
+										<f:fields>
+											<ComboBox xmlns:sap.ui.core="sap.ui.core" selectedItem="Element sap.ui.core.ListItem#idday" value="Diária" selectedKey="item1" selectedItemId="idday" id="idFiltroPeriod" width="200px" textAlign="Begin" textDirection="LTR">
+												<items>
+													<core:ListItem text="Diário" key="day" id="idday" />
+													<core:ListItem text="Semanal" key="week" id="idweek" />
+													<core:ListItem text="Mensal" key="month" id="idmonth" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="">
+										<f:fields>
+											<Button id="btFilter" text="{i18n>btnFilter}" width="100px" press="onFilter" type="Emphasized" icon="sap-icon://filter" />
+											<Button id="btClear" text="{i18n>btnClear}" width="100px" press="onClear" icon="sap-icon://clear-filter">
+												<layoutData>
+													<l:GridData span="L9 M1 S1" />
+												</layoutData>
+											</Button>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<FlexBox class="sapUiResponsiveMargin" width="auto" id="__box4" backgroundDesign="Translucent">
+				<items>
+					<Toolbar width="100%">
+						<content>
+							<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto" />
+							<Text text=" " id="gap" textAlign="Left" textDirection="LTR" wrapping="false" width="720px" />
+							<Button width="100px" id="__button3" text="{i18n>btnInsert}" icon="sap-icon://add" press="onCreate" type="Emphasized" />
+							<Text text="{i18n>btnHide}" id="__text5" textAlign="Left" textDirection="LTR" wrapping="false" width="35px" />
+							<Switch id="btSwitch" change="onSwitch" state="true" />
+						</content>
+					</Toolbar>
+				</items>
+			</FlexBox>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: '/modeloPreditivoOData', sorter: { path: 'NAME', descending: false } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<headerToolbar />
+				<columns>
+					<Column id="__column2">
+						<header>
+							<Label text="{i18n>tableNameColumnTitle1}" id="__label9" textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="__column4">
+						<header>
+							<Label text="{i18n>tableNameColumnTitle2}" id="__label4" textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="__column7">
+						<header>
+							<Label text="{i18n>tableNameColumnTitle3}" id="__label7" textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="__column0">
+						<header>
+							<Label text="{i18n>tableNameColumnTitle6}" id="__label6" textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="__column1">
+						<header>
+							<Label text="{i18n>tableNameColumnTitle7}" id="__label8" textAlign="Center" />
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{NAME}" id="input1" />
+							<ComboBox value="List Item 1" selectedKey="{PREDICTIVE_MODEL_SUBJECT_ID}" id="__box2" items="{ path: '/tipoModeloPreditivoOData' }" editable="false">
+								<items>
+									<core:ListItem key="{PREDICTIVE_MODEL_SUBJECT_ID}" text="{NAME}" />
+								</items>
+							</ComboBox>
+							<ObjectAttribute text="{ path: 'TRIGGER_NAME', type: 'sap.ui.model.odata.type.string'}" />
+							<ObjectAttribute text="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+							<ObjectAttribute text="{ path: 'VALID_UNTIL',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>
