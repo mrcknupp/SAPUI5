@@ -1,0 +1,56 @@
+<mvc:View controllerName="com.cpfl.ordenarpriorizacao.controller.Object"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:content>
+			<Table id="tblCoordenadas" width="auto" mode="SingleSelectLeft"
+				class="sapUiResponsiveMargin" items="{acoesModel>/tableItems}"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				updateFinished="onUpdateFinished" growing="true"
+				growingScrollToLoad="true">
+				<headerToolbar>
+					<Toolbar>
+						<ToolbarSpacer />
+						<Button text="Up" id="__button3" press="onUp"
+							icon="sap-icon://navigation-up-arrow" />
+
+						<Button text="Down" id="__button2" press="onDown"
+							icon="sap-icon://navigation-down-arrow" />
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="Nome">
+						<Text text="Nome" id="nomeColumnTitle" />
+					</Column>
+					<Column id="Ordem">
+						<Text text="Ordem de execução" id="ordemColumnTitle" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectAttribute text="{acoesModel>NAME}" />
+							<ObjectAttribute text="{acoesModel>EXECUTION_ORDER}" />
+
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>		
+
+	</semantic:FullscreenPage>
+
+</mvc:View>
