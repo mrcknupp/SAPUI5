@@ -1,0 +1,22 @@
+[{
+	"RESTRICTION_ID": 1,
+	"COUNTRY": "BR",
+	"REGION": "SP",
+	"CITY_CODE": "SAO PAulo",
+	"CITYP_CODE": "Moca",
+	"STREET_CODE": "rua da moca"
+}, {
+	"RESTRICTION_ID": 2,
+	"COUNTRY": "US",
+	"REGION": "CH",
+	"CITY_CODE": "Ilinois",
+	"CITYP_CODE": "sei la bairro",
+	"STREET_CODE": "rua do seila onde"
+}, {
+	"RESTRICTION_ID": 3,
+	"COUNTRY": "FR",
+	"REGION": "PR",
+	"CITY_CODE": "Paris",
+	"CITYP_CODE": "Champs Elisée",
+	"STREET_CODE": "rua principal de paris"
+}]

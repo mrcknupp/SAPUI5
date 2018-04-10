@@ -1,0 +1,33 @@
+[{
+	"ACTION_ID": 1,
+	"VALID_FROM": "/Date(1488078000000)/",
+	"VALID_UNTIL": "/Date(1490497200000)/",
+	"CHANNEL_ID": 1,
+	"T001_BUKRS": "EMP01",
+	"NAME": "Açao 01",
+	"DESCRIPTION": "Decrição da Ação 01"
+}, {
+	"ACTION_ID": 2,
+	"VALID_FROM": "/Date(1488164400000)/",
+	"VALID_UNTIL": "/Date(1490583600000)/",
+	"CHANNEL_ID": 2,
+	"T001_BUKRS": "EMP01",
+	"NAME": "Açao 02",
+	"DESCRIPTION": "Decrição da Ação 02"
+}, {
+	"ACTION_ID": 3,
+	"VALID_FROM": "/Date(1488250800000)/",
+	"VALID_UNTIL": "/Date(1490670000000)/",
+	"CHANNEL_ID": 3,
+	"T001_BUKRS": "EMP01",
+	"NAME": "Açao 03",
+	"DESCRIPTION": "Decrição da Ação 03"
+}, {
+	"ACTION_ID": 4,
+	"VALID_FROM": "/Date(1488337200000)/",
+	"VALID_UNTIL": "/Date(1490756400000)/",
+	"CHANNEL_ID": 4,
+	"T001_BUKRS": "EMP01",
+	"NAME": "Açao 04",
+	"DESCRIPTION": "Decrição da Ação 04"
+}]

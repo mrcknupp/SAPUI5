@@ -1,0 +1,17 @@
+[{
+	"CODIGO_CIDADE": "RJ",
+	"CIDADE": "Rio de Janeiro",
+	"UF": "RJ"
+}, {
+	"CODIGO_CIDADE": "SP",
+	"CIDADE": "São Paulo",
+	"UF": "SP"
+}, {
+	"CODIGO_CIDADE": "FP",
+	"CIDADE": "Florianópolis",
+	"UF": "SC"
+}, {
+	"CODIGO_CIDADE": "BA",
+	"CIDADE": "Bairoo Belo Horizonte",
+	"UF": "BH"
+}]

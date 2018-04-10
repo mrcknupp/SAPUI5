@@ -1,0 +1,25 @@
+[{
+	"RESTRICTION_ID": 1,
+	"ACTION_ID": 1,
+	"NAME": "Ação 01"
+}, {
+	"RESTRICTION_ID": 1,
+	"ACTION_ID": 2,
+	"NAME": "Ação 02"
+}, {
+	"RESTRICTION_ID": 1,
+	"ACTION_ID": 3,
+	"NAME": "Ação 03"
+}, {
+	"RESTRICTION_ID": 2,
+	"ACTION_ID": 2,
+	"NAME": "Ação 02"
+}, {
+	"RESTRICTION_ID": 2,
+	"ACTION_ID": 3,
+	"NAME": "Ação 03"
+}, {
+	"RESTRICTION_ID": 3,
+	"ACTION_ID": 4,
+	"NAME": "Ação 04"
+}]

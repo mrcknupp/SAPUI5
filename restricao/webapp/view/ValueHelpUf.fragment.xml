@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+   <Dialog id="valueHelp" title="{i18n>valueHelpUfTitle}">
+   		<content>
+				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formFragmentUfFilter">
+					<sap.ui.layout.form:content>
+						<Label text="{i18n>objectLabelTextFilterUf}" width="100%" id="labelFragmentFiltroUf" labelFor="idValueHelpUfFiltroUF"/>
+						<Input width="300px" id="idValueHelpUfFiltroUF"/>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+				
+				<Table id="tableFragmentUF" width="auto" class="sapUiResponsiveMargin" items="{ path: '/ufOData' }" noDataText="{worklistView>/tableNoDataText}" 
+					busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" mode="SingleSelect">
+					<columns>
+						<Column id="descricaoColumn">
+							<Text text="{i18n>tableUfColumnTitleCod}" id="descricaoColumnTitle"/>
+						</Column>
+						<Column id="motivoRestricaoColumn" hAlign="Right">
+							<Text text="{i18n>tableUfColumnTitleDescricao}" id="motivoRestricaoColumnTitle"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onFragmentFilterUfSelect">
+							<cells>
+								<ObjectIdentifier title="{CODIGO_UF}"/>
+								<ObjectAttribute text="{UF}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+					<headerToolbar>
+						<Toolbar width="100%" id="__toolbarFragmentUf">
+							<Button text="{i18n>buttonFiltrarText}" width="100px" id="__button1" press="onFragmentFilterUF" icon="sap-icon://filter" type="Emphasized"/>
+						</Toolbar>
+					</headerToolbar>
+				</Table>
+  	 </content>
+  	 <beginButton>
+         <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onFragmentFilterUfSelect" type="Accept"/>
+      </beginButton>
+		<endButton>
+			<Button text="Close" press="onFragUfClose" id="btnCancelUf" type="Reject"/>
+		</endButton>      
+   </Dialog>
+</core:FragmentDefinition>

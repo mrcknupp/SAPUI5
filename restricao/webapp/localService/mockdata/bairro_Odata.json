@@ -1,0 +1,17 @@
+[{
+	"CODIGO_BAIRRO": "B1",
+	"BAIRRO": "BAirro 1",
+	"CODIGO_CIDADE": "RJ"
+}, {
+	"CODIGO_BAIRRO": "B2",
+	"BAIRRO": "Bairro 2",
+	"CODIGO_CIDADE": "SP"
+}, {
+	"CODIGO_BAIRRO": "B3",
+	"BAIRRO": "Bairro 3",
+	"CODIGO_CIDADE": "FP"
+}, {
+	"CODIGO_BAIRRO": "B4",
+	"BAIRRO": "Bairro 4",
+	"CODIGO_CIDADE": "BA"
+}]

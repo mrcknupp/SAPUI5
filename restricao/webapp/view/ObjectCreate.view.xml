@@ -1,0 +1,340 @@
+<mvc:View xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	controllerName="com.cpfl.restricao.controller.ObjectCreate" xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Input width="300px" id="inputTipoRestricaoInv" value="{RESTRICTION_TYPE}"
+				visible="false" />
+			<Input width="300px" id="inputNome" value="{BNAME}" visible="false" />
+			<Panel id="__panel0" headerText="{i18n>objectHeaderTextDadosGerais}"
+				class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<f:Form id="FormCreateGeneral" maxContainerCols="4"
+						editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{i18n>objectInputLabelId}">
+										<f:fields>
+											<Input width="300px" id="inputRestrictionId" value="{RESTRICTION_ID}"
+												editable="false" textAlign="Begin" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>objectInputLabelDescricao}">
+										<f:fields>
+											<Input width="300px" id="inputDescription" value="{DESCRIPTION}"
+												editable="{objectView>/formEditable}" textAlign="Begin" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>objectInputLabelMotivoRestricao}"
+										align="Begin">
+										<f:fields>
+											<HBox width="300px" id="boxMotivo">
+												<ActionSelect width="269px" value="List Item 1"
+													selectedKey="{RESTRICTION_REASON_ID}" id="inputReason"
+													items="{ path: '/motivoRestricaoOData', sorter: { path: 'NAME' } }"
+													editable="{objectView>/formEditable}" textAlign="Begin">
+													<items>
+														<core:ListItem key="{RESTRICTION_REASON_ID}"
+															text="{NAME}" />
+													</items>
+												</ActionSelect>
+												<Button text="" id="buttonRefreshMotivo" press="onPressRefreshMotivo"
+													icon="sap-icon://refresh" align="left" padding="0" />
+											</HBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>objectInputLabelValidoDesde}">
+										<f:fields colspan="2">
+											<DatePicker width="300px" id="inputValDesde"
+												displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy"
+												value="{ path: 'VALID_FROM',  type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', UTC:true}}"
+												editable="{objectView>/formEditable}" textAlign="Begin" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>objectInputLabelValidoAte}">
+										<f:fields>
+											<DatePicker width="300px" id="inputValAte"
+												displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy"
+												value="{ path: 'VALID_UNTIL',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+												editable="{objectView>/formEditable}" textAlign="Begin" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>objectInputLabelTipoRestricao}">
+										<f:fields>
+											<RadioButtonGroup columns="3"
+												selectedIndex="{objectView>/tipoRestricaoSelectedKey}" id="inputTipoRestricao"
+												fieldGroupIds="TIPO_RESTRICAO" editable="{objectView>/formEditable}"
+												select="onSelectTipoRestricao">
+												<buttons>
+													<RadioButton groupName="__group1"
+														text="{i18n>objectRadioTipoRestricaoIndividual}" id="__button2"
+														fieldGroupIds="INDIVIDUAL" />
+													<RadioButton groupName="__group1"
+														text="{i18n>objectRadioTipoRestricaoAreaRisco}" id="__button3"
+														fieldGroupIds="LOCATION" />
+													<RadioButton groupName="__group1"
+														text="{i18n>objectRadioTipoRestricaoCNAE}" id="__button4"
+														fieldGroupIds="CNAE" />
+												</buttons>
+											</RadioButtonGroup>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<Panel id="__panel1" headerText="{i18n>objectHeaderTextRestricoes}"
+				class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="panelIndividual" headerText="{i18n>objectHeaderTextIndividual}"
+						visible="{objectView>/fragmentIndividualVisible}">
+						<f:Form id="FormCreateRestrIndividual" maxContainerCols="4"
+							editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="{i18n>objectInputLabelContaContrato}">
+											<f:fields>
+												<!-- <Input width="300px" id="inputIndividualContaContrato" value="{ 
+													path: 'INDIVIDUAL_VKONT', type: 'sap.ui.model.odata.type.String' , constraints:{ 
+													maxLength:12, nullable:false } }" maxLength="12" editable="{objectView>/formEditable}" 
+													textAlign="Begin" /> -->
+												<TextArea id="inputIndividualContaContrato" height="400%"
+													textAlign="Begin" editable="{objectView>/formEditable}"
+													value="" liveChange="onChangeTextoContr" textDirection="LTR"
+													width="400px" wrapping="Soft" rows="4" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>objectInputLabelParceiro}">
+											<f:fields>
+												<!-- <Input width="300px" id="inputIndividualParceiro" value="{ 
+													path: 'INDIVIDUAL_PARTNER', type: 'sap.ui.model.odata.type.String' , constraints:{ 
+													maxLength:10, nullable:false } }" maxLength="10" editable="{objectView>/formEditable}" 
+													textAlign="Begin" /> -->
+												<TextArea id="inputIndividualParceiro" height="400%"
+													textAlign="Begin" editable="{objectView>/formEditable}"
+													value="" liveChange="onChangeTextoParc" textDirection="LTR"
+													width="400px" wrapping="Soft" rows="4" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>objectInputLabelInstalacao}">
+											<f:fields>
+												<!-- <Input width="300px" id="inputIndividualInstalacao" value="{ 
+													path: 'INDIVIDUAL_ANLAGE', type: 'sap.ui.model.odata.type.String' , constraints:{ 
+													maxLength:10, nullable:false } }" maxLength="10" editable="{objectView>/formEditable}" 
+													textAlign="Begin" /> -->
+												<TextArea id="inputIndividualInstalacao" height="400%"
+													textAlign="Begin" editable="{objectView>/formEditable}"
+													value="" liveChange="onChangeTextoInst" textDirection="LTR"
+													width="400px" wrapping="Soft" rows="4" />
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="panelCnae" headerText="{i18n>objectHeaderTextCNAE}"
+						visible="{objectView>/fragmentCNAEVisible}">
+						<f:Form id="FormCreateRestrCnae" maxContainerCols="10"
+							editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="{i18n>objectInputLabelCnae}">
+											<f:fields>
+												<!-- <Input width="300px" id="inputCnaeCnae" value="{ path: 'CNAE_CNAE', 
+													type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false 
+													} }" maxLength="10" editable="{objectView>/formEditable}" textAlign="Begin" 
+													showValueHelp="true" valueHelpRequest="onCNAE"></Input> -->
+												<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+													width="500px" id="inputCnaeCnae" enableMultiLineMode="true"
+													showValueHelp="true" valueHelpRequest="onCNAE"
+													valueHelpOnly="true">
+												</MultiInput>
+
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="panelAreaRisco" headerText="{i18n>objectHeaderTextAreaRisco}"
+						visible="{objectView>/fragmentAreaRiscoVisible}">
+
+						<f:Form id="FormCreateRestrAreaRisco" maxContainerCols="4"
+							editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="{i18n>objectInputLabelUF}">
+											<f:fields>
+												<Input width="400px" id="inputAreaRiscoUF"
+													placeholder="{i18n>objectInputPlaceHolderUF}"
+													value="{ path: 'AREA_REGION' , type: 'sap.ui.model.odata.type.String' , constraints:{ nullable:false } }"
+													showSuggestion="true" editable="{objectView>/formEditable}"
+													showValueHelp="true" valueHelpRequest="openValueHelpUf"
+													submit="submitInputUF" textAlign="Begin" suggestionItems="{/ufOData}">
+
+													<suggestionItems>
+														<core:Item key="{CODIGO_UF}" text="{UF}" />
+													</suggestionItems>
+
+												</Input>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>objectInputLabelMunicipio}">
+											<f:fields>
+												<Input width="400px" id="inputAreaRiscoMunicipio"
+													placeholder="{i18n>objectInputPlaceHolderMunicipio}"
+													value="{ path: 'AREA_CITY_CODE', type: 'sap.ui.model.odata.type.String' , constraints:{  nullable:false } }"
+													editable="{objectView>/formEditable}" textAlign="Begin"
+													showValueHelp="true" valueHelpRequest="openValueHelpMunicipio"
+													submit="submitInputMunicipio" description="{AREA_CITY_TEXT}"
+													suggestionItems="{ path: '/cidadeOData' }" suggest="handleSuggestMunicipio"
+													showSuggestion="true">
+													<suggestionItems>
+														<core:Item key="{CODIGO_CIDADE}" text="{CIDADE}" />
+													</suggestionItems>
+												</Input>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>objectInputLabelBairro}">
+											<f:fields>
+												<Input width="400px" id="inputAreaRiscoBairro"
+													placeholder="{i18n>objectInputPlaceHolderBairro}"
+													value="{ path: 'AREA_CITYP_CODE', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:8, nullable:false } }"
+													maxLength="8" editable="{objectView>/formEditable}"
+													textAlign="Begin" showValueHelp="true" valueHelpRequest="openValueHelpBairro"
+													submit="submitInputBairro" description="{AREA_CITYP_TEXT}">
+												</Input>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>objectInputLabelLoradouro}">
+											<f:fields>
+												<!-- <Input width="400px" id="inputAreaRiscoLogradouro" placeholder="{i18n>objectInputPlaceHolderLogradouro}" 
+													value="{ path: 'STREET_CODE', type: 'sap.ui.model.odata.type.String' , constraints:{ 
+													maxLength:12, nullable:false } }" maxLength="12" editable="{objectView>/formEditable}" 
+													textAlign="Begin" showValueHelp="true" valueHelpRequest="openValueHelpLogradouro" 
+													submit="submitInputLogradouro" description="{STREET_TEXT}"> </Input> -->
+												<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+													width="400px" id="inputAreaRiscoLogradouro"
+													enableMultiLineMode="true" showValueHelp="true"
+													valueHelpRequest="openValueHelpLogradouro" valueHelpOnly="true"
+													submit="submitInputLogradouro">
+												</MultiInput>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel id="__panel5" headerText="{i18n>objectHeaderTextAcoes}">
+						<f:Form id="FormCreateRestrAcao" maxContainerCols="4"
+							editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="{i18n>objectInputLabelEmpresa}">
+											<f:fields>
+												<ComboBox width="300px" selectedKey="{ACAO_BUKRS}"
+													id="inputAcaoEmpresa" items="{ path: '/empresaOData', sorter: { path: 'BUTXT' } }"
+													editable="{objectView>/formEditable}" textAlign="Begin">
+													<items>
+														<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+													</items>
+												</ComboBox>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+
+
+						<Table width="auto" id="tableAcoes" mode="MultiSelect"
+							items="{acoesModel>/tableItems}" class="sapUiResponsiveMargin"
+							noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+							growing="true" growingScrollToLoad="true">
+							<headerToolbar>
+								<Toolbar>
+									<ToolbarSpacer />
+									<Button text="{i18n>objectButtonIncluirAcaoText}" id="buttonIncluirAcao"
+										press="onPressIncluirAcao" icon="sap-icon://add" />
+									<Button text="{i18n>objectButtonApagarText}" id="__button0"
+										press="onDeleteActionRow" icon="sap-icon://delete" />
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="empresaColumn">
+									<Text text="{i18n>empresaColumnTitle}" id="empresaColumnTitle" />
+								</Column>
+								<Column id="empresaTextColumn">
+									<Text text="{i18n>empresaTextColumnTitle}" id="empresaTextColumnTitle" />
+								</Column>
+								<Column id="codAcaoColumn">
+									<Text text="{i18n>codAcaoColumnTitle}" id="codAcaoColumnTitle" />
+								</Column>
+								<Column id="nomeAcaoColumn">
+									<Text text="{i18n>nomeAcaoColumntTile}" id="nomeAcaoColumntTile" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectAttribute text="{acoesModel>BUKRS}" />
+										<ObjectAttribute text="{acoesModel>BUTXT}" />
+										<ObjectAttribute text="{acoesModel>ACTION_ID}" />
+										<ObjectAttribute text="{acoesModel>NAME}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</Panel>
+				</content>
+			</Panel>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" icon="sap-icon://save"
+				id="idActionSave" press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				icon="sap-icon://delete" id="idActionApagar" press="onDeletar"
+				visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+	</semantic:FullscreenPage>
+</mvc:View>

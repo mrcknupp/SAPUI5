@@ -1,0 +1,10 @@
+[{
+	"RESTRICTION_ID": 1,
+	"CNAE": "222222"
+}, {
+	"RESTRICTION_ID": 2,
+	"CNAE": "444444"
+}, {
+	"RESTRICTION_ID": 3,
+	"CNAE": "666666"
+}]

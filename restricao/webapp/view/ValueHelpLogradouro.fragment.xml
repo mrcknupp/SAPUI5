@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+   <Dialog id="valueHelpLogradouro" title="{i18n>valueHelpLogradouroTitle}">
+   		<content>
+				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formFragmentLogradouroFilter">
+					<sap.ui.layout.form:content>
+						<Label text="{i18n>objectLabelTextFilterLogradouro}" width="100%" id="labelFragmentFiltroLogradouro" labelFor="idValueHelpLogradouroFiltroLogradouro"/>
+						<Input width="300px" id="idValueHelpLogradouroFiltroLogradouro"/>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+				
+				<Table id="tableFragmentLogradouro" width="auto" class="sapUiResponsiveMargin" items="{ path: '/logradouroOData' }" noDataText="{worklistView>/tableNoDataText}" 
+					busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="false" growingScrollToLoad="true" mode="MultiSelect" updateFinished="onUpdateFinished">
+					<columns>
+						<Column id="descricaoColumn">
+							<Text text="{i18n>tableLogradouroColumnTitleCod}" id="descricaoColumnTitle"/>
+						</Column>
+						<Column id="motivoRestricaoColumn" hAlign="Right">
+							<Text text="{i18n>tableLogradouroColumnTitleDescricao}" id="motivoRestricaoColumnTitle"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onFragmentFilterLogradouroSelect">
+							<cells>
+								<ObjectIdentifier title="{CODIGO_LOGRADOURO}"/>
+								<ObjectAttribute text="{LOGRADOURO}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+					<headerToolbar>
+						<Toolbar width="100%" id="__toolbarFragmentLogradouro">
+							<Button text="{i18n>buttonFiltrarText}" width="100px" id="__button1" press="onFragmentFilterLogradouro" icon="sap-icon://filter" type="Emphasized"/>
+						</Toolbar>
+					</headerToolbar>
+				</Table>
+  	 </content>
+  	 <beginButton>
+         <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onFragmentFilterLogradouroSelect" type="Accept"/>
+      </beginButton>
+		<endButton>
+			<Button text="Close" press="onFragLogradouroClose" id="btnCancelLogra" type="Reject"/>
+		</endButton>      
+   </Dialog>
+</core:FragmentDefinition>

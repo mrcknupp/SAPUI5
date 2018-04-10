@@ -1,0 +1,212 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	controllerName="com.cpfl.restricao.controller.Object">
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Input width="300px" id="inputNome" value="{BNAME}" visible="false" />
+			<Panel id="__panel0" headerText="{i18n>objectHeaderTextDadosGerais}"
+				class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<sap.ui.layout.form:SimpleForm
+						xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true"
+						layout="ResponsiveGridLayout" id="__form0">
+						<sap.ui.layout.form:content>
+							<Label text="{i18n>objectInputLabelId}">
+							</Label>
+							<Input width="300px" id="inputRestrictionId" value="{RESTRICTION_ID}"
+								editable="{objectView>/formEditable}" textAlign="Begin" />
+							<Label text="{i18n>objectInputLabelDescricao}">
+							</Label>
+							<Input width="300px" id="inputDescription" value="{DESCRIPTION}"
+								editable="{objectView>/formEditable}" textAlign="Begin" />
+							<Label text="{i18n>objectInputLabelMotivoRestricao}">
+							</Label>
+							<ComboBox width="300px" value="List Item 1" selectedKey="{RESTRICTION_REASON_ID}"
+								id="inputReason" items="{ path: '/motivoRestricaoOData', sorter: { path: 'NAME' } }"
+								editable="{objectView>/formEditable}" textAlign="Begin">
+								<items>
+									<core:ListItem key="{RESTRICTION_REASON_ID}"
+										text="{NAME}" />
+								</items>
+							</ComboBox>
+							<Label text="{i18n>objectInputLabelValidoDesde}">
+							</Label>
+							<DatePicker width="300px" id="inputValDesde"
+								displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy"
+								value="{ path: 'VALID_FROM',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+								editable="{objectView>/formEditable}" textAlign="Begin" />
+							<Label text="{i18n>objectInputLabelValidoAte}">
+							</Label>
+							<DatePicker width="300px" id="inputValAte"
+								displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy"
+								value="{ path: 'VALID_UNTIL',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+								editable="{objectView>/formEditable}" textAlign="Begin" />
+							<Label text="{i18n>objectInputLabelTipoRestricao}">
+							</Label>
+							<RadioButtonGroup columns="3"
+								selectedIndex="{objectView>/tipoRestricaoSelectedKey}" id="inputTipoRestricao"
+								fieldGroupIds="TIPO_RESTRICAO" editable="{objectView>/formEditable}"
+								select="onSelectTipoRestricao">
+								<buttons>
+									<RadioButton groupName="__group1"
+										text="{i18n>objectRadioTipoRestricaoIndividual}" id="__button2"
+										fieldGroupIds="INDIVIDUAL" />
+									<RadioButton groupName="__group1"
+										text="{i18n>objectRadioTipoRestricaoAreaRisco}" id="__button3"
+										fieldGroupIds="LOCATION" />
+									<RadioButton groupName="__group1"
+										text="{i18n>objectRadioTipoRestricaoCNAE}" id="__button4"
+										fieldGroupIds="CNAE" />
+								</buttons>
+							</RadioButtonGroup>
+							<core:InvisibleText text="InvisibleText" id="__text0" />
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+			</Panel>
+			<Panel id="__panel1" headerText="{i18n>objectHeaderTextRestricoes}"
+				class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="__panel2" headerText="{i18n>objectHeaderTextIndividual}"
+						visible="{objectView>/fragmentIndividualVisible}" binding="{ path: 'RestricaoIndividual'}">
+						<sap.ui.layout.form:SimpleForm
+							xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true"
+							layout="ResponsiveGridLayout" id="__form1">
+							<sap.ui.layout.form:content>
+								<Label text="{i18n>objectInputLabelContaContrato}">
+								</Label>
+								<!-- <Input width="300px" id="inputIndividualContaContrato" value="{VKONT}" 
+									editable="{objectView>/formEditable}" textAlign="Begin" /> -->
+								<TextArea id="inputIndividualContaContrato" height="400%"
+									textAlign="Begin" editable="{objectView>/formEditable}" value="{VKONT}"
+									textDirection="LTR" width="400px" wrapping="Soft" rows="4" />
+
+								<Label text="{i18n>objectInputLabelParceiro}">
+								</Label>
+								<!-- <Input width="300px" id="inputIndividualParceiro" value="{PARTNER}" 
+									editable="{objectView>/formEditable}" textAlign="Begin" /> -->
+								<TextArea id="inputIndividualParceiro" height="400%"
+									textAlign="Begin" editable="{objectView>/formEditable}" value="{PARTNER}"
+									textDirection="LTR" width="400px" wrapping="Soft" rows="4" />
+								<Label text="{i18n>objectInputLabelInstalacao}">
+								</Label>
+								<!-- <Input width="300px" id="inputIndividualInstalacao" value="{ANLAGE}" 
+									editable="{objectView>/formEditable}" textAlign="Begin" /> -->
+								<TextArea id="inputIndividualInstalacao" height="400%"
+									textAlign="Begin" editable="{objectView>/formEditable}" value="{ANLAGE}"
+									textDirection="LTR" width="400px" wrapping="Soft" rows="4" />
+							</sap.ui.layout.form:content>
+						</sap.ui.layout.form:SimpleForm>
+					</Panel>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="__panel3" headerText="{i18n>objectHeaderTextCNAE}"
+						visible="{objectView>/fragmentCNAEVisible}" binding="{ path: 'RestricaoCNAE'}">
+
+						<sap.ui.layout.form:SimpleForm
+							xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true"
+							layout="ResponsiveGridLayout" id="__form2">
+							<sap.ui.layout.form:content>
+								<Label text="{i18n>objectInputLabelCnae}">
+								</Label>
+								<Input width="300px" id="inputCnaeCnae" showValueHelp="true"
+									value="{CNAE}" editable="{objectView>/formEditable}" textAlign="Begin"
+									valueHelpRequest="onCNAE"></Input>
+								<!-- <MultiInput xmlns="sap.m" editable="{objectView>/formEditable}" 
+									width="500px" id="inputCnaeCnae" enableMultiLineMode="true" showValueHelp="true" 
+									valueHelpRequest="onCNAE" valueHelpOnly="true"> </MultiInput> -->
+							</sap.ui.layout.form:content>
+						</sap.ui.layout.form:SimpleForm>
+					</Panel>
+					<Panel xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+						xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+						xmlns="sap.m" id="__panel4" headerText="{i18n>objectHeaderTextAreaRisco}"
+						visible="{objectView>/fragmentAreaRiscoVisible}" binding="{ path: 'RestricaoLocalidade'}">
+						<sap.ui.layout.form:SimpleForm
+							xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true"
+							layout="ResponsiveGridLayout" id="__form3">
+							<sap.ui.layout.form:content>
+								<Label text="{i18n>objectInputLabelUF}">
+								</Label>
+								<Input width="300px" id="inputAreaRiscoUF" placeholder="{i18n>objectInputPlaceHolderUF}"
+									value="{REGION}" description="{REGION_TEXT}" editable="{objectView>/formEditable}"
+									textAlign="Begin">
+								</Input>
+								<Label text="{i18n>objectInputLabelMunicipio}">
+								</Label>
+								<Input width="300px" id="inputAreaRiscoMunicipio"
+									placeholder="{i18n>objectInputPlaceHolderMunicipio}" value="{CITY_CODE}"
+									description="{CITY_TEXT}" editable="{objectView>/formEditable}"
+									textAlign="Begin">
+								</Input>
+								<Label text="{i18n>objectInputLabelBairro}">
+								</Label>
+								<Input width="300px" id="inputAreaRiscoBairro"
+									placeholder="{i18n>objectInputPlaceHolderBairro}" value="{CITYP_CODE}"
+									description="{CITYP_TEXT}" editable="{objectView>/formEditable}"
+									textAlign="Begin">
+								</Input>
+								<Label text="{i18n>objectInputLabelLoradouro}">
+								</Label>
+
+								<Input width="300px" id="inputAreaRiscoLogradouro"
+									placeholder="{i18n>objectInputPlaceHolderLogradouro}" value="{STREET_CODE}"
+									description="{STREET_TEXT}" editable="{objectView>/formEditable}"
+									textAlign="Begin">
+								</Input>
+
+								<!-- <MultiInput xmlns="sap.m" editable="{objectView>/formEditable}" 
+									width="300px" id="inputAreaRiscoLogradouro" enableMultiLineMode="true" showValueHelp="false" 
+									valueHelpOnly="true"> </MultiInput> -->
+
+							</sap.ui.layout.form:content>
+						</sap.ui.layout.form:SimpleForm>
+					</Panel>
+					<Panel id="__panel5" headerText="{i18n>objectHeaderTextAcoes}">
+						<Table id="tableAcoes" width="auto" class="sapUiResponsiveMargin"
+							items="{ path: 'RestricaoAcao' }" noDataText="{worklistView>/tableNoDataText}"
+							busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+							updateFinished="onUpdateFinished" growing="true"
+							growingScrollToLoad="true">
+							<columns>
+								<Column id="empresaColumn">
+									<Text text="{i18n>empresaColumnTitle}" id="empresaColumnTitle" />
+								</Column>
+								<Column id="empresaTextColumn">
+									<Text text="{i18n>empresaTextColumnTitle}" id="empresaTextColumnTitle" />
+								</Column>
+								<Column id="codAcaoColumn">
+									<Text text="{i18n>codAcaoColumnTitle}" id="codAcaoColumnTitle" />
+								</Column>
+								<Column id="nomeAcaoColumn">
+									<Text text="{i18n>nomeAcaoColumntTile}" id="nomeAcaoColumntTile" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectAttribute text="{path: 'BUKRS'}" />
+										<ObjectAttribute text="{path: 'BUTXT' }" />
+										<ObjectAttribute text="{ path: 'ACTION_ID' }" />
+										<ObjectAttribute text="{ path: 'NAME' }" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</Panel>
+				</content>
+			</Panel>
+		</semantic:content>
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" />
+		</semantic:mainAction>
+
+	</semantic:FullscreenPage>
+</mvc:View>

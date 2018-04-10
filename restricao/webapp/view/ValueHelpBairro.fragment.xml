@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+   <Dialog id="valueHelpBairro" title="{i18n>valueHelpBairroTitle}">
+   		<content>
+				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formFragmentBairroFilter">
+					<sap.ui.layout.form:content>
+						<Label text="{i18n>objectLabelTextFilterBairro}" width="100%" id="labelFragmentFiltroBairro" labelFor="idValueHelpBairroFiltroBairro"/>
+						<Input width="300px" id="idValueHelpBairroFiltroBairro"/>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+				
+				<Table id="tableFragmentBairro" width="auto" class="sapUiResponsiveMargin" items="{ path: '/bairroOData' }" noDataText="{worklistView>/tableNoDataText}" 
+					busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" mode="SingleSelect">
+					<columns>
+						<Column id="codBAirroColumn">
+							<Text text="{i18n>tableBairroColumnTitleCod}" id="codBAirroColumnTitle"/>
+						</Column>
+						<Column id="bairroColumn" hAlign="Right">
+							<Text text="{i18n>tableBairroColumnTitleDescricao}" id="bairroColumnTitle"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onFragmentFilterBairroSelect">
+							<cells>
+								<ObjectIdentifier title="{CODIGO_BAIRRO}"/>
+								<ObjectAttribute text="{BAIRRO}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+					<headerToolbar>
+						<Toolbar width="100%" id="__toolbarFragmentBairro">
+							<Button text="{i18n>buttonFiltrarText}" width="100px" id="__button1Bairro" press="onFragmentFilterBairro" icon="sap-icon://filter" type="Emphasized"/>
+						</Toolbar>
+					</headerToolbar>
+				</Table>
+  	 </content>
+  	 <beginButton>
+         <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onFragmentFilterBairroSelect" type="Accept"/>
+      </beginButton>
+		<endButton>
+			<Button text="Close" press="onFragBairroClose" id="btnCancelBairro" type="Reject"/>
+		</endButton>      
+   </Dialog>
+</core:FragmentDefinition>

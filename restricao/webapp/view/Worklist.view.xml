@@ -1,0 +1,112 @@
+<mvc:View xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core" controllerName="com.cpfl.restricao.controller.Worklist">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel id="idPanelFiltro" headerText="{i18n>headerFiltroText}" class="sapUiResponsiveMargin" width="95%" visible="true">
+				<content>
+					<f:Form id="FormFiltro" maxContainerCols="4" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{i18n>inputFiltroDescricaoLabel}">
+										<f:fields>
+											<Input width="300px" id="idFiltroDescricao" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>inputFiltroMotivoRestricaoLabel}">
+										<f:fields>
+											<ComboBox width="300px" id="idMotivoDescricao" items="{ path: '/motivoRestricaoOData', sorter: { path: 'NAME' } }" editable="{objectView>/formEditable}" textAlign="Begin">
+												<items>
+													<core:ListItem key="{RESTRICTION_REASON_ID}" text="{NAME}" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>inputFiltroDataRefLabel}">
+										<f:fields>
+											<DatePicker width="300px" id="idFiltroValDesde" displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy" />
+										</f:fields>
+									</f:FormElement>
+									<!-- <f:FormElement label="{i18n>inputFiltroValAteLabel}">
+										<f:fields>
+											<DatePicker width="300px" id="idFiltroValAte" displayFormat="dd/MM/yyyy" placeholder="dd/MM/yyyy" />
+										</f:fields>
+									</f:FormElement> -->
+									<f:FormElement label="{i18n>inputFiltroTipoRestricaLabel}">
+										<f:fields>
+											<RadioButtonGroup columns="3" selectedIndex="-1" id="idFiltroTipoRestricao" fieldGroupIds="{RESTRICTION_TYPE}">
+												<buttons>
+													<RadioButton groupName="__group1" text="{i18n>radioIndividualText}" id="__button2" fieldGroupIds="INDIVIDUAL" />
+													<RadioButton groupName="__group1" text="{i18n>radioAreaRiscoText}" id="__button3" fieldGroupIds="LOCATION" />
+													<RadioButton groupName="__group1" text="{i18n>radioCNAEText}" id="__button4" fieldGroupIds="CNAE" />
+												</buttons>
+											</RadioButtonGroup>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+
+					<Button text="{i18n>buttonFiltrarText}" width="100px" id="__button1" press="onFilter" icon="sap-icon://filter" type="Emphasized" />
+					<Button text="{i18n>buttonLimparText}" width="100px" id="idBtRefresh" press="onClearFilter" icon="sap-icon://clear-filter" />
+
+				</content>
+			</Panel>
+			<Table id="table" width="auto" 
+				class="sapUiResponsiveMargin" 
+				items="{ path: '/RestricaoOData' }" 
+				noDataText="{worklistView>/tableNoDataText}" 
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}" 
+				updateFinished="onUpdateFinished" 
+				growing="true" 
+				growingScrollToLoad="true">
+				<headerToolbar>
+					<Toolbar>			
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer/>
+						<ToolbarSpacer />
+						<Button text="{i18n>buttonNovoLabel}" width="100px" id="__button0" type="Emphasized" press="onPressNovo" icon="sap-icon://add" />
+						<Label text="{i18n>buttonShitchFiltroLabel}" id="__label1" />
+						<Switch id="__switch0" change="onSwitchFilter" state="true" />
+						<content />
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="descricaoColumn">
+						<Text text="{i18n>tableDescricaoColumnTitle}" id="descricaoColumnTitle" />
+					</Column>
+					<Column id="motivoRestricaoColumn">
+						<Text text="{i18n>tableMotivoRestricaoColumnTitle}" id="motivoRestricaoColumnTitle" />
+					</Column>
+					<Column id="tipoRestricaoColumn">
+						<Text text="{i18n>tableTipoRestricaoColumnTitle}" id="tipoRestricaoColumnTitle" />
+					</Column>
+					<Column id="valDesdeColumn">
+						<Text text="{i18n>tableValDesdeColumnTitle}" id="valDesdeColumnTitle" />
+					</Column>
+					<Column id="valAteColumn">
+						<Text text="{i18n>tableValAteColumnTitle}" id="valAteColumnTitle" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{DESCRIPTION}" />
+							<ComboBox value="" selectedKey="{RESTRICTION_REASON_ID}" id="__box2" items="{ path: '/motivoRestricaoOData', sorter: { path: 'NAME' } }" editable="false">
+								<items>
+									<core:ListItem key="{RESTRICTION_REASON_ID}" text="{NAME}" />
+								</items>
+							</ComboBox>
+							<ObjectAttribute text="{RESTRICTION_TYPE}" />
+							<ObjectAttribute text="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+							<ObjectAttribute text="{ path: 'VALID_UNTIL', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>
