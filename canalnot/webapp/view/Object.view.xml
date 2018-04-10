@@ -1,0 +1,280 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	controllerName="com.cpfl.canalnot.controller.Object">
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Panel id="panelDados" headerText="{i18n>hdDadosBasicos}"
+				class="sapUiResponsiveMargin">
+				<content>
+					<sap.ui.layout.form:SimpleForm
+						xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core"
+						editable="true" layout="ResponsiveGridLayout" id="idForm0" width="100%">
+						<sap.ui.layout.form:content>
+							<Label text="{i18n>lblnome}" id="lblNome" required="true" />
+							<Input width="300px" id="inName" value="{NAME}"
+								placeholder="Nome" editable="{objectView>/formEditable}"
+								textAlign="Left" />
+							<Label text="{i18n>lblDesc}" id="lblDesc" />
+							<Input width="300px" id="inDescr" value="{DESCRIPTION}"
+								placeholder="Descrição" editable="{objectView>/formEditable}"
+								textAlign="Left" />
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+			</Panel>
+			<Panel id="__panel1" class="sapUiResponsiveMargin">
+				<content>
+					<IconTabBar xmlns="sap.m" selectedKey="__filter0" id="__bar0"
+						class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter id="__filter0" text="{i18n>lblInterface}"
+								icon="sap-icon://internet-browser" design="Horizontal">
+								<content>
+									<Panel id="__panel3" headerText="{i18n>lblInterSaida}">
+										<content>
+											<sap.ui.layout.form:SimpleForm
+												xmlns:sap.ui.layout.form="sap.ui.layout.form"
+												xmlns:sap.ui.core="sap.ui.core" editable="true"
+												layout="ResponsiveGridLayout" id="__form2">
+												<sap.ui.layout.form:content>
+													<Label text="{i18n>lblInterface}" id="lblInterface" />
+													<RadioButtonGroup xmlns:mvc="sap.ui.core.mvc"
+														xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+														xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic"
+														xmlns:footerbar="sap.ushell.ui.footerbar"
+														xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+														xmlns:sap.ui.layout.form="sap.ui.layout.form"
+														xmlns:sap.ui.core="sap.ui.core" xmlns="sap.m"
+														ariaLabelledBy="__xmlview0--__item3-label" width="60%"
+														selectedIndex="{objectView>/tipoInterfaceSelectedKey}" id="inputTipoInterface"
+														fieldGroupIds="TIPO_INTERFACE" select="onSelectTipoInterface">
+														<buttons>
+															<RadioButton editable="{objectView>/formEditable}"
+																groupName="__group0" text="CCS" id="rbCCS"
+																fieldGroupIds="CCS" />
+															<RadioButton editable="{objectView>/formEditable}"
+																groupName="__group0" text="{i18n>lblLayoutSaida}" id="rbLayout"
+																fieldGroupIds="LAYOUT" />
+														</buttons>
+													</RadioButtonGroup>
+													<FlexBox width="100%" id="__box2">
+														<items>
+															<FlexBox id="boxCCS" visible="{objectView>/boxCCS}"
+																direction="Column">
+																<items>
+																	<!-- <Input width="300px" id="inCCS" placeholder="Interface 
+																		CCS" editable="{objectView>/formEditable}" value="{INTEGRATION_CCS}" textAlign="Left" 
+																		/> -->
+																	<MultiInput xmlns="sap.m"
+																		editable="{objectView>/formEditable}" width="300px"
+																		id="inCCS" enableMultiLineMode="false" showValueHelp="true"
+																		valueHelpRequest="onCCSHelp" valueHelpOnly="true">
+																	</MultiInput>
+																</items>
+															</FlexBox>
+															<FlexBox id="boxLayout" visible="{objectView>/boxLayout}"
+																direction="Row">
+																<items>
+																	<FlexBox width="100%" id="boxinLayout">
+																		<items>
+																			<!-- <Input width="300px" id="inTpLayout" textAlign="Begin" 
+																				textDirection="LTR" editable="{objectView>/formEditable}" value="{LAYOUT_NAME}" 
+																				showValueHelp="true" valueHelpRequest="onLayoutHelp" valueHelpOnly="true" 
+																				/> -->
+
+																			<MultiInput xmlns="sap.m"
+																				editable="{objectView>/formEditable}" width="300px"
+																				id="inTpLayout" enableMultiLineMode="false"
+																				showValueHelp="true" valueHelpRequest="onLayoutHelp"
+																				valueHelpOnly="true">
+																			</MultiInput>
+																			<Button ariaLabelledBy="__xmlview0--__item3-label"
+																				text="{i18n>btnLayout}" width="100%" id="BtnLayout"
+																				press="onOpenLayout" activeIcon="sap-icon://begin"
+																				icon="sap-icon://begin" visible="{objectView>/formEditable}" />
+																		</items>
+																	</FlexBox>
+																</items>
+															</FlexBox>
+														</items>
+													</FlexBox>
+													<Label text="{i18n>empresaColumn}" id="lbEmpresa" />
+													<Input id="inEmpresa" width="300px"
+														editable="{objectView>/formEditable}" value="{ZBUKRS_NEG}"
+														placeholder="{i18n>empresaColumn}" textAlign="Left"
+														maxLength="4" />
+													<Label text="{i18n>lblModelo}" id="lblModelo" />
+													<Input width="300px" id="inModelo" editable="{objectView>/formEditable}"
+														value="{ZMODELO}" textAlign="Left" placeholder="{i18n>lblModelo}"
+														maxLength="4" />
+													<Label text="Empresa Exemplo" />
+													<!-- <MultiInput xmlns="sap.m" editable="{objectView>/formEditable}" 
+														width="300px" id="inEmpEx" enableMultiLineMode="false" showValueHelp="true" 
+														valueHelpRequest="onEmpresaExemploHelp" valueHelpOnly="true"> </MultiInput> -->
+												</sap.ui.layout.form:content>
+											</sap.ui.layout.form:SimpleForm>
+										</content>
+									</Panel>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="__filter0_copy" design="Horizontal"
+								text="{i18n>lblServico}" icon="sap-icon://crm-service-manager">
+								<content>
+									<Panel id="__panel2" headerText="{i18n>lblServico}">
+										<content>
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+												id="__form10">
+												<f:content>
+													<Label text="{i18n>lblServico}" id="__label6" />
+													<CheckBox editable="{objectView>/formEditable}"
+														width="30px" id="cbServico" selected="{objectView>/checkServico}" />
+													<Label text="{i18n>lblTipoServico}" id="__label2"
+														required="true" />
+													<!-- <Input width="300px" id="inTpServico" textAlign="Begin" 
+														textDirection="LTR" editable="{objectView>/formEditable}" value="{CAMP_ACTIVITY}" 
+														showValueHelp="true" valueHelpRequest="onServicoHelp" valueHelpOnly="true" 
+														/> -->
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inTpServico" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onServicoHelp"
+														valueHelpOnly="true" tokenChange="onChangeServico">
+													</MultiInput>
+													<Label text="{i18n>lblcentro}" id="__label3"
+														required="true" />
+													<MultiInput editable="{objectView>/formEditable}"
+														valueHelpOnly="true" width="300px" id="inCentro"
+														enableMultiLineMode="true" showValueHelp="true"
+														valueHelpRequest="onCentroHelp1">
+														<core:Item key="{SERVICE_TEAM_ID}" text="{NAME}" />
+													</MultiInput>
+												</f:content>
+											</f:SimpleForm>
+										</content>
+									</Panel>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="__filter0_copy2" text="{i18n>lblOrcamento}"
+								icon="sap-icon://money-bills" design="Horizontal">
+								<content>
+									<Panel id="__panel4" headerText="{i18n>lblCustoQtd}">
+										<content>
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+												id="__form15">
+												<f:content>
+													<Label text="{i18n>lblCustoUnit}" id="lblCusto" />
+													<Input editable="{objectView>/formEditable}"
+														ariaLabelledBy="__item7-label" width="300px" id="inCustoUnitario"
+														type="Number" value="{BUDGET_COST_UNIT}" required="true"
+														placeholder="{i18n>plInforme}" textAlign="Left" />
+
+													<Label text="{i18n>lblQtdMen}" id="lblQtdMes"
+														required="true" />
+													<Input editable="{objectView>/formEditable}" type="Number"
+														width="300px" id="inQtdMensal" textAlign="Left"
+														placeholder="{i18n>plQtdMensal}" value="{BUDGET_PROVIDE_MONTH}" />
+													<Label text="{i18n>lblQtdAnual}" id="lblQtdAno"
+														required="true" />
+													<Input editable="{objectView>/formEditable}" type="Number"
+														width="300px" id="inQtdAnual" textAlign="Left"
+														placeholder="{i18n>plQtdAnual}" value="{BUDGET_PROVIDE_YEAR}" />
+													<Label text="" id="lblsp" />
+													<Button text="{i18n>btnProgramacao}" width="150px"
+														id="BtnProgramacao" activeIcon="sap-icon://begin" icon="sap-icon://begin"
+														press="onOpenProgramacao" />
+												</f:content>
+											</f:SimpleForm>
+										</content>
+									</Panel>
+									<Panel id="__panel5" headerText="{i18n>headForma}">
+										<content>
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+												id="__form16">
+												<f:content>
+													<Label text="{i18n>lblTipos}" id="lblTip" />
+													<RadioButtonGroup ariaLabelledBy="__xmlview0--__item3-label"
+														width="50%" columns="1" selectedIndex="0" id="inputTipoQtd_copy"
+														fieldGroupIds="FORMA_ENVIO" select="onSelectFormaEnvio">
+														<buttons>
+															<RadioButton editable="{objectView>/formEditable}"
+																selected="true" groupName="__group1" text="{i18n>lblContaContr}"
+																id="rbContaContrato" fieldGroupIds="contaContrato" />
+															<RadioButton editable="{objectView>/formEditable}"
+																groupName="__group1" text="{i18n>lblFatura}" id="rbQtdFatura"
+																fieldGroupIds="qtdFatura" />
+														</buttons>
+													</RadioButtonGroup>
+													<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+														xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+														xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+														xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+														xmlns="sap.m" width="100%" id="boxContas" visible="{objectView>/inFatura}">
+														<items>
+															<Input width="300px" id="inFatura" type="Number"
+																editable="{objectView>/formEditable}" placeholder="{i18n>plQtdFaturas}"
+																textAlign="Left" value="{BUDGET_METHOD_SEND_QTD}" />
+														</items>
+													</FlexBox>
+												</f:content>
+											</f:SimpleForm>
+										</content>
+									</Panel>
+									<Panel id="__panel6" headerText="{i18n>hdContagem}">
+										<content>
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+												id="__form17">
+												<f:content>
+													<Label text="{i18n>lblTipos}" id="lblTip1" />
+													<RadioButtonGroup ariaLabelledBy="__xmlview0--__item3-label"
+														width="100%" columns="1" selectedIndex="0" id="rgContagem"
+														fieldGroupIds="CONTAGEM">
+														<buttons>
+															<RadioButton editable="{objectView>/formEditable}"
+																selected="true" groupName="__group1" text="{i18n>lblEnvio}"
+																id="rbEnvio" fieldGroupIds="ENVIO" />
+															<RadioButton editable="{objectView>/formEditable}"
+																groupName="__group1" text="{i18n>lblConfirm}" id="rbConfirmacao"
+																fieldGroupIds="CONFIRMACAO" />
+															<RadioButton editable="{objectView>/formEditable}"
+																groupName="__group1" text="{i18n>lblPagam}" id="rbPagamento"
+																fieldGroupIds="PAGAMENTO" />
+														</buttons>
+													</RadioButtonGroup>
+												</f:content>
+											</f:SimpleForm>
+										</content>
+									</Panel>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Panel>
+		</semantic:content>
+
+		<!-- BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+
+	</semantic:FullscreenPage>
+</mvc:View>

@@ -1,0 +1,30 @@
+[{
+	"ACTION_ID": 2605,
+	"VALID_FROM": "/Date(1114187390000)/",
+	"VALID_UNTIL": "/Date(1001089790000)/",
+	"CHANNEL_ID": 4817,
+	"T001_BUKRS": "T001_BUKRS 1",
+	"PREDICTIVE_MODEL_ID": 4679,
+	"CAMP_SELECTION_ID": "CAMP_SELECTION_ID 1",
+	"NAME": "NAME 1",
+	"DESCRIPTION": "DESCRIPTION 1",
+	"TRIGGER_PERIODICITY": "X",
+	"TRIGGER_MON": "Segunda",
+	"TRIGGER_TUE": "Terça",
+	"TRIGGER_WED": "Quarta",
+	"TRIGGER_THU": "",
+	"TRIGGER_FRI": "",
+	"TRIGGER_SAT": "",
+	"TRIGGER_SUN": "",
+	"TRIGGER_DAY_MONTH": 9045,
+	"TRIGGER_HOLIDAY": "Feriado",
+	"IF_CAMPAIGN": "X",
+	"IF_AUTO_SELECTION": "X",
+	"EXECUTION_ORDER": 5871,
+	"VALUE_DISTRIBUTION": 9335.32,
+	"USR01_BNAME": "Gilberto",
+	"__metadata": {
+		"uri": "Acao_Odata(ACTION_ID=2605,VALID_FROM=datetime'2005-04-22T16%3A29%3A50')",
+		"type": "accs.services.service.Acao_OdataType"
+	}
+}]

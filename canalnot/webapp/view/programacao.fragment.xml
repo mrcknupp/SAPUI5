@@ -1,0 +1,333 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" id="programacao">
+	<Dialog title="Programação" id="programacaoDialog">
+		<content>
+			<!--<Panel id="__panel0" headerText="Programação" class="sapUiResponsiveMargin">-->
+			<Panel id="__panelProg" class="sapUiResponsiveMargin">
+				<content>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" class="editableForm"
+						layout="ResponsiveGridLayout" id="formProg" width="80%">
+						<sap.ui.layout.form:content>
+							<VBox class="sapUiSmallMargin">
+								<FlexBox width="100%" id="__box97" direction="Column">
+									<items>
+									<FlexBox width="100%" id="boxProgData">
+											<items>
+												<FlexBox width="30%" id="boxProgData1_1" alignItems="Center">
+													<!--<Input width="100%" id="inSelectMes" showSuggestion="true" showValueHelp="true"/>-->
+													<items>
+														<Input width="250px" type="Number" id="inAno" editable="true" maxLength="4" placeholder="Ano"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="35%" id="boxProgData1_2" alignItems="Center">
+													<items>
+														<FlexBox width="100%" id="boxProgData1_2_1" alignItems="Center" alignContent="Start">
+															<items>
+																<Label text="" width="100%" id="lblspaceData"/>
+															</items>
+														</FlexBox>				
+													</items>
+												</FlexBox>
+												<FlexBox width="35%" id="boxProgData1_3" alignItems="Center">
+													<items>
+														<FlexBox width="100%" id="boxProgData1_3_2" alignItems="Center" alignContent="Start">
+															<items>
+																	<DatePicker id="inToday" width="300px"
+																			displayFormat="dd/MM/yyyy HH:mm:ss" placeholder="dd/MM/yyyy"
+																		value="{ type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+																		editable="false" visible="true" textAlign="Right"/>
+															</items>
+														</FlexBox>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>									
+									
+									
+										<FlexBox width="100%" id="boxProg1">
+											<items>
+												<FlexBox width="30%" id="boxProg1_1" alignItems="Center">
+													<!--<Input width="100%" id="inSelectMes" showSuggestion="true" showValueHelp="true"/>-->
+													<items>
+														<ComboBox width="250px" selectionChange="openMonth" value="" selectedKey="" selectedItemId="" id="comboMes"
+															placeholder="mês">
+															<items>
+																<core:ListItem text="Janeiro" key="01" id="idJaneiro"/>
+																<core:ListItem text="Fevereiro" key="02" id="idfevereiro"/>
+																<core:ListItem text="Março" key="03" id="idmarco"/>
+																<core:ListItem text="Abril" key="04" id="idabril"/>
+																<core:ListItem text="Maio" key="05" id="idmaio"/>
+																<core:ListItem text="Junho" key="06" id="idjunho"/>
+																<core:ListItem text="Julho" key="07" id="idjulho"/>
+																<core:ListItem text="Agosto" key="08" id="idagosto"/>
+																<core:ListItem text="Setembro" key="09" id="idsetembro"/>
+																<core:ListItem text="Outubro" key="10" id="idoutubro"/>
+																<core:ListItem text="Novembro" key="11" id="idnovembro"/>
+																<core:ListItem text="Dezembro" key="12" id="iddezembro"/>
+															</items>
+														</ComboBox>
+													</items>
+												</FlexBox>
+												<FlexBox width="35%" id="boxProg1_2" alignItems="Center">
+													<items>
+														<FlexBox width="30%" id="boxProg1_2_1" alignItems="Center" alignContent="Start">
+															<items>
+																<Label text="Saldo do Mes" width="100%" id="lblMes"/>
+															</items>
+														</FlexBox>
+														<FlexBox width="70%" id="boxProg1_2_2" alignItems="Center" alignContent="SpaceBetween">
+															<items>
+																<Input width="100%" type="Number" id="inQtdMes" editable="false" />
+															</items>
+														</FlexBox>
+													</items>
+												</FlexBox>
+												<FlexBox width="35%" id="boxProg1_3" alignItems="Center">
+													<items>
+														<FlexBox width="30%" id="boxProg1_3_1" alignItems="Center" alignContent="Start">
+															<items>
+																<Label text="Saldo Anual" width="100%" id="lblAno"/>
+															</items>
+														</FlexBox>
+														<FlexBox width="70%" id="boxProg1_3_2" alignItems="Center" alignContent="SpaceBetween">
+															<items>
+																<Input width="100%" type="Number" id="inQtdAno" editable="false"/>
+															</items>
+														</FlexBox>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>
+										<FlexBox width="100%" id="boxProg2">
+											<items>
+												<FlexBox width="150px" id="boxProg2_1" alignItems="Center" alignContent="Start">
+													<items>
+														<Label text="01" width="100%" id="lblMes_copy" textAlign="Begin"/>
+														<Label text=" " width="100%" id="lblMes_space" textAlign="Begin"/>
+														<Input width="90px" id="in01" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_2" alignItems="Center">
+													<items>
+														<Label text="02" width="100%" id="lblMes_copy2"/>
+														<Input width="90px" id="in02" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_3" alignItems="Center">
+													<items>
+														<Label text="03" width="100%" id="lblMes_copy3"/>
+														<Input width="90px" id="in03" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_4" alignItems="Center">
+													<items>
+														<Label text="04" width="100%" id="lblMes_copy24"/>
+														<Input width="90px" id="in04" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_5" alignItems="Center">
+													<items>
+														<Label text="05" width="100%" id="lblMes_copy5"/>
+														<Input width="90px" id="in05" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_6" alignItems="Center">
+													<items>
+														<Label text="06" width="100%" id="lblMes_copy26"/>
+														<Input width="90px" id="in06" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg2_7" alignItems="Center">
+													<items>
+														<Label text="07" width="100%" id="lblMes_copy27"/>
+														<Input width="90px" id="in07" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>
+										<FlexBox width="100%" id="boxProg3">
+											<items>
+												<FlexBox width="150px" id="boxProg3_1" alignItems="Center">
+													<items>
+														<Label text="08" width="100%" id="lblMes_copy31"/>
+														<Input width="90px" id="in08" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_2" alignItems="Center">
+													<items>
+														<Label text="09" width="100%" id="lblMes_copy32"/>
+														<Input width="90px" id="in09" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_3" alignItems="Center">
+													<items>
+														<Label text="10" width="100%" id="lblMes_copy33"/>
+														<Input width="90px" id="in10" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_4" alignItems="Center">
+													<items>
+														<Label text="11" width="100%" id="lblMes_copy34"/>
+														<Input width="90px" id="in11" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_5" alignItems="Center">
+													<items>
+														<Label text="12" width="100%" id="lblMes_copy35"/>
+														<Input width="90px" id="in12" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_6" alignItems="Center">
+													<items>
+														<Label text="13" width="100%" id="lblMes_copy36"/>
+														<Input width="90px" id="in13" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg3_7" alignItems="Center">
+													<items>
+														<Label text="14" width="100%" id="lblMes_copy37"/>
+														<Input width="90px" id="in14" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>
+										<FlexBox width="100%" id="boxProg4">
+											<items>
+												<FlexBox width="150px" id="boxProg4_1" alignItems="Center">
+													<items>
+														<Label text="15" width="100%" id="lblMes_copy41"/>
+														<Input width="90px" id="in15" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_2" alignItems="Center">
+													<items>
+														<Label text="16" width="100%" id="lblMes_copy42"/>
+														<Input width="90px" id="in16" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_3" alignItems="Center">
+													<items>
+														<Label text="17" width="100%" id="lblMes_copy43"/>
+														<Input width="90px" id="in17" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_4" alignItems="Center">
+													<items>
+														<Label text="18" width="100%" id="lblMes_copy44"/>
+														<Input width="90px" id="in18" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_5" alignItems="Center">
+													<items>
+														<Label text="19" width="100%" id="lblMes_copy45"/>
+														<Input width="90px" id="in19" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_6" alignItems="Center">
+													<items>
+														<Label text="20" width="100%" id="lblMes_copy46"/>
+														<Input width="90px" id="in20" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg4_7" alignItems="Center">
+													<items>
+														<Label text="21" width="100%" id="lblMes_copy47"/>
+														<Input width="90px" id="in21" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>
+										<FlexBox width="100%" id="boxProg5">
+											<items>
+												<FlexBox width="150px" id="boxProg5_1" alignItems="Center">
+													<items>
+														<Label text="22" width="100%" id="lblMes_copy52"/>
+														<Input width="90px" id="in22" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_2" alignItems="Center">
+													<items>
+														<Label text="23" width="100%" id="lblMes_copy53"/>
+														<Input width="90px" id="in23" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_3" alignItems="Center">
+													<items>
+														<Label text="24" width="100%" id="lblMes_copy54"/>
+														<Input width="90px" id="in24" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_4" alignItems="Center">
+													<items>
+														<Label text="25" width="100%" id="lblMes_copy55"/>
+														<Input width="90px" id="in25" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_5" alignItems="Center">
+													<items>
+														<Label text="26" width="100%" id="lblMes_copy56"/>
+														<Input width="90px" id="in26" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_6" alignItems="Center">
+													<items>
+														<Label text="27" width="100%" id="lblMes_copy57"/>
+														<Input width="90px" id="in27" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg5_7" alignItems="Center">
+													<items>
+														<Label text="28" width="100%" id="lblMes_copy58"/>
+														<Input width="90px" id="in28" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+											</items>
+										</FlexBox>
+										<FlexBox width="100%" id="boxProg6">
+											<items>
+												<FlexBox width="150px" id="boxProg6_1" alignItems="Center">
+													<items>
+														<Label text="29" width="100%" id="lblMes_copy59"/>
+														<Input width="90px" id="in29" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_2" alignItems="Center" visible="{objectView>/day30}">
+													<items>
+														<Label text="30" width="100%" id="lblMes_copy60"/>
+														<Input width="90px" id="in30" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_3" alignItems="Center" visible="{objectView>/day31}">
+													<items>
+														<Label text="31" width="100%" id="lblMes_copy61"/>
+														<Input width="90px" id="in31" editable="{objectView>/formEditable}" type="Number" liveChange="onChangeValue"/>
+													</items>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_4" alignItems="Center">
+													<items/>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_5" alignItems="Center">
+													<items/>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_6" alignItems="Center">
+													<items/>
+												</FlexBox>
+												<FlexBox width="150px" id="boxProg6_7" alignItems="Center">
+													<items/>
+												</FlexBox>
+											</items>
+										</FlexBox>
+									</items>
+								</FlexBox>
+							</VBox>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+		<buttons>
+			<!-- <Button text="Calcular Saldo" press="onCalcProg" id="btnCalcular" visible="{objectView>/formEditable}"/> -->
+			<Button text="Gravar" press="onSaveProg" id="btnSave" visible="{objectView>/formEditable}"/>
+			<Button text="Close" press="close" id="btnCancel"/>
+		</buttons>			
+	</Dialog>
+</core:FragmentDefinition>

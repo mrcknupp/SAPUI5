@@ -1,0 +1,143 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="acao.controller.Worklist">
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel id="pnlFiltro" headerText="Dados Gerais" class="sapUiResponsiveMargin"
+				width="95%" visible="true">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1"
+					class="sapUiSmallMargin">
+					<f:layout>
+						<f:ResponsiveGridLayout />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer ariaLabelledBy="Title2">
+							<f:formElements>
+								<f:FormElement label="{i18n>lbEmpresa}">
+									<f:fields>
+
+										<ComboBox value="List Item 1" selectedKey="{BUKRS}"
+											id="comboEmpresa" width="300px" textAlign="Begin"
+											textDirection="LTR" items="{ path: '/empresaOData' }">
+											<items>
+												<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+											</items>
+										</ComboBox>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>lbAcaoCobranca}">
+									<f:fields>
+										<Input width="300px" value="{NAME}" id="inFilterAcao" />
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Canal de Notificação">
+									<f:fields>
+										<Input width="300px" value="" id="inFilterCanal" />
+									</f:fields>
+								</f:FormElement>								
+								<f:FormElement label="">
+									<f:fields>
+										<Button text="Filtrar" width="100px" id="btnFilter"
+											press="onFilter" icon="sap-icon://filter" type="Emphasized" />
+										<Button text="Limpar" width="100px" id="btnRefresh"
+											press="onClear" icon="sap-icon://clear-filter">
+											<layoutData>
+												<l:GridData span="L9 M1 S1" />
+											</layoutData>
+										</Button>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</Panel>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin"
+				items="{ path: '/acaoOData', sorter: { path: 'NAME', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished"
+				includeItemInSelection="true">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" />
+						<ToolbarSpacer />
+						<content>
+							<Button width="100px" id="btnNovo" text="{i18n>btnNovo}"
+								icon="sap-icon://add" press="onPressNew" type="Emphasized" />
+							<Label text="{i18n>lbFiltro}" width="2%" id="__label0" />
+							<Switch id="btnSwitch" change="onSwitch" state="true" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="nameColumn" width="25%">
+						<header>
+							<Text text="{i18n>tableNameColumnNomee}" id="nameColumnTitle"
+								textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="Empresa0" width="25%">
+						<header>
+							<Text id="__text12" text="{i18n>tableNameColumnEmpresa}" />
+						</header>
+					</Column>
+					<Column id="Diario">
+						<header>
+							<Text text="{i18n>tableNameColumnPeriodicidade}" id="colDiario"
+								textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="Des">
+						<header>
+							<Text text="{i18n>tableNameColumnDe}" id="colDes" textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="Ate">
+						<header>
+							<Text text="{i18n>tableNameColumnAte}" id="colAte"
+								textAlign="Center" />
+						</header>
+					</Column>
+					<Column id="Canal" width="20%">
+						<header>
+							<Text text="{i18n>tableNameColumnCanal}" id="colCanals"
+								textAlign="Center" />
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{NAME}" />
+							<ComboBox width="100%" value="List Item 1" selectedKey="{BUKRS}"
+								id="comboEmpresa2" items="{ path: '/acaoOData' }" editable="false">
+								<items>
+									<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+								</items>
+							</ComboBox>
+							<ComboBox width="100%" value="List Item 1" selectedKey="{TRIGGER_PERIODICITY}"
+								id="comboPeriodicidade" items="{ path: '/acaoOData' }" editable="false">
+								<items>
+									<core:ListItem key="{TRIGGER_PERIODICITY}"
+										text="{TRIGGER_NAME}" />
+								</items>
+							</ComboBox>
+							<ObjectAttribute
+								text="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}" />
+							<ObjectAttribute
+								text="{ path: 'VALID_UNTIL', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}" />
+							<ComboBox value="{NAME}" selectedKey="{CHANNEL_ID}" id="comboCanal"
+								items="{ path: '/canalNotificacaoOData' }" editable="false">
+								<items>
+									<core:ListItem key="{CHANNEL_ID}" text="{NAME}" />
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

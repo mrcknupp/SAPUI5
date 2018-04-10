@@ -1,0 +1,307 @@
+<mvc:View xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="acao.controller.Object">
+	<semantic:FullscreenPage id="page2"
+		navButtonPress="onNavBack" showNavButton="true" title="{objectView>/viewTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail"
+				press="onShareEmailPress" />
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam"
+				visible="{FLP>/isShareInJamActive}" press="onShareInJamPress" />
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile"
+				title="{objectView>/saveAsTileTitle}" />
+		</semantic:saveAsTileAction>
+		<semantic:content>
+			<Panel id="__panel0" width="100%">
+				<content>
+					<Panel id="pnlDadosGerais" width="95%" class="sapUiResponsiveMargin"
+						headerText="{i18n>hdDadosGerais}">
+						<content>
+							<HBox width="100%" id="hbDados" alignItems="Start"
+								renderType="Bare">
+								<items>
+									<Panel id="pnlAcaoCobranca" backgroundDesign="Solid">
+										<content>
+											<f:Form id="FormToolbar" editable="true"
+												adjustLabelSpan="true" columnsM="2" ariaLabelledBy="Title1">
+												<f:layout>
+													<f:ResponsiveGridLayout />
+												</f:layout>
+												<f:formContainers>
+													<f:FormContainer title="{i18n>lbl_acao}"
+														id="__container8">
+														<f:formElements>
+															<f:FormElement label="{i18n>lbl_Empresa}">
+																<f:fields>
+																	<ComboBox value="{T001_BUKRS}" selectedKey="{BUKRS}"
+																		editable="{objectView>/formEditable}" id="comboEmpresa"
+																		width="300px" textAlign="Begin" textDirection="LTR"
+																		items="{ path: '/empresaOData' }">
+																		<items>
+																			<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+																		</items>
+																	</ComboBox>
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="{i18n>lbNomeAcao}">
+																<f:fields>
+																	<Input value="{NAME}" width="300px" id="inNomeAcao"
+																		textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="{i18n>lbDescricao}">
+																<f:fields>
+																	<Input value="{DESCRIPTION}" width="300px" id="inDescricao"
+																		textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+
+																</f:fields>
+															</f:FormElement>
+															<!-- SIR 6193 - Thiago César - 17/05/2017 - Início -->
+															<f:FormElement label="{i18n>distribCanal}">
+																<f:fields>
+																	<Input value="{VALUE_DISTRIBUTION}" width="85px"
+																		id="inDistCanal" textAlign="Begin" textDirection="LTR" type="Number"
+																		maxLength="3" editable="{objectView>/formEditable}">
+																		<layoutData>
+																			<l:GridData span="L2 M2 S2" />
+																		</layoutData>
+																	</Input>
+																	<Input value="%" width="50px" id="inPerc"
+																		textAlign="Begin" textDirection="LTR" maxLength="1"
+																		editable="false">
+
+																	</Input>
+
+																</f:fields>
+															</f:FormElement>
+															<!-- SIR 6193 - Thiago César - 17/05/2017 - Fim -->
+															<f:FormElement label="{i18n>lbValidoDesde}"
+																visible="{objectView>/dateVisible}">
+																<f:fields>
+																	<DatePicker id="inValidoDesde" width="300px"
+																		displayFormat="dd/MM/yyyy HH:mm:ss" placeholder="dd/MM/yyyy"
+																		value="{ path: 'VALID_FROM',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+																		editable="false" visible="{objectView>/dateVisible}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="{i18n>lbValidoAte}"
+																visible="{objectView>/dateVisible}">
+																<f:fields>
+																	<DatePicker id="inValidoAte" width="300px"
+																		displayFormat="dd/MM/yyyy HH:mm:ss" placeholder="dd/MM/yyyy"
+																		value="{ path: 'VALID_UNTIL',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}"
+																		editable="false" visible="{objectView>/dateVisible}" />
+																</f:fields>
+															</f:FormElement>
+														</f:formElements>
+													</f:FormContainer>
+													<f:FormContainer title="{i18n>lbPeriodicidade}"
+														id="__container2">
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="true"
+																	text="{i18n>lbDiaria}" id="radioDiario" editable="{objectView>/formEditable}"
+																	select="onRadioPress" />
+																<CheckBox id="chkDSabado" text="{i18n>lbSabado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+																<CheckBox id="chkDDomingo" text="{i18n>lbDomingo}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+																<CheckBox id="chkDFeriado" text="{i18n>lbFeriado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="false"
+																	text="{i18n>lbSemanal}" editable="{objectView>/formEditable}"
+																	select="onRadioPress" id="radioSemanal" />
+																<CheckBox id="chkSDomingo" text="{i18n>lbDomingo}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSSegunda" text="{i18n>lbSegunda}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSTerca" text="{i18n>lbTerca}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<Label text="" />
+																<CheckBox id="chkSQuarta" text="{i18n>lbQuarta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSQuinta" text="{i18n>lbQuinta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSSexta" text="{i18n>lbSexta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<Label text="" />
+																<CheckBox id="chkSSabado" text="{i18n>lbSabado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<Label text="" />
+																<Label text="" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="false"
+																	text="{i18n>lbMensal}" editable="{objectView>/formEditable}"
+																	select="onRadioPress" id="radioMensal" />
+																<ComboBox value="{TRIGGER_DAY_MONTH}"
+																	selectedKey="{TRIGGER_DAY_MONTH}" editable="{objectView>/formEditable}"
+																	id="inMensal" width="300px" textAlign="Begin"
+																	textDirection="LTR" visible="{objectView>/mensalVisible}">
+																	<items>
+																		<core:ListItem key="1" text="1" />
+																		<core:ListItem key="2" text="2" />
+																		<core:ListItem key="3" text="3" />
+																		<core:ListItem key="4" text="4" />
+																		<core:ListItem key="5" text="5" />
+																		<core:ListItem key="6" text="6" />
+																		<core:ListItem key="7" text="7" />
+																		<core:ListItem key="8" text="8" />
+																		<core:ListItem key="9" text="9" />
+																		<core:ListItem key="10" text="10" />
+																		<core:ListItem key="11" text="11" />
+																		<core:ListItem key="12" text="12" />
+																		<core:ListItem key="13" text="13" />
+																		<core:ListItem key="14" text="14" />
+																		<core:ListItem key="15" text="15" />
+																		<core:ListItem key="16" text="16" />
+																		<core:ListItem key="17" text="17" />
+																		<core:ListItem key="18" text="18" />
+																		<core:ListItem key="19" text="19" />
+																		<core:ListItem key="20" text="20" />
+																		<core:ListItem key="21" text="21" />
+																		<core:ListItem key="21" text="22" />
+																		<core:ListItem key="23" text="23" />
+																		<core:ListItem key="24" text="24" />
+																		<core:ListItem key="25" text="25" />
+																		<core:ListItem key="26" text="26" />
+																		<core:ListItem key="27" text="27" />
+																		<core:ListItem key="28" text="28" />
+																		<!-- <core:ListItem key="29" text="29" /> <core:ListItem 
+																			key="30" text="30" /> <core:ListItem key="31" text="31" /> -->
+																	</items>
+																</ComboBox>
+																<Label text="" />
+																<Label text="" />
+															</f:fields>
+														</f:FormElement>
+
+													</f:FormContainer>
+												</f:formContainers>
+											</f:Form>
+
+										</content>
+									</Panel>
+								</items>
+							</HBox>
+						</content>
+					</Panel>
+					<Panel id="__panel4" headerText="{i18n>lbDetalheAcaoCobranca}"
+						class="sapUiResponsiveMargin" width="95%">
+						<f:Form id="FormToolbar2" editable="true" ariaLabelledBy="Title1">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer ariaLabelledBy="Title2">
+									<f:formElements>
+										<f:FormElement label="{i18n>lbTipoAcaoCobranca}">
+											<f:fields>
+												<CheckBox ariaLabelledBy="__item5-labe9" id="chkCampanha"
+													text="{i18n>lbCampanha}" editable="{objectView>/formEditable}"
+													width="200px" />
+												<CheckBox ariaLabelledBy="__item5-label0" id="chkSelecaoFinal"
+													text="{i18n>lbSelecaoFinalAuto}" editable="{objectView>/formEditable}"
+													width="200px">
+													<layoutData>
+														<l:GridData span="L8 M5 S4" />
+													</layoutData>
+												</CheckBox>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>lbCanalNotificacao}">
+											<f:fields>
+												<HBox width="100%" id="__hbox7">
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inCanalNot" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onCanalHelp"
+														tokenChange="onChangeCanal" valueHelpOnly="true">
+													</MultiInput>
+
+
+													<Button text="Novo" width="100px" id="__button0"
+														press="onClickCanal" visible="{objectView>/buttonVisible}" />
+												</HBox>
+											</f:fields>
+										</f:FormElement>
+										<!-- <f:FormElement label="{i18n>canalServico}"> <f:fields> <CheckBox 
+											ariaLabelledBy="label1" id="chkSelecao" editable="{objectView>/formEditable}" 
+											select="onCheckTipo" width="300px" /> </f:fields> </f:FormElement> -->
+										<f:FormElement label="{i18n>tipoSelecao}"
+											visible="{objectView>/tipoVisible}">
+											<f:fields>
+												<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+													width="300px" id="inHelpTipo" enableMultiLineMode="false"
+													showValueHelp="true" valueHelpRequest="onTipoHelp"
+													valueHelpOnly="true" visible="{objectView>/tipoVisible}">
+												</MultiInput>
+											</f:fields>
+										</f:FormElement>
+<!-- 										<f:FormElement label="{i18n>modeloPreditivo}">
+											<f:fields>
+												<HBox width="100%" id="__hbox0">
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inModeloPre" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onModeloHelp"
+														valueHelpOnly="true">
+													</MultiInput>
+													<Button text="Novo" width="100px" id="__button1"
+														press="onClickModelo" visible="{objectView>/buttonVisible}" />
+												</HBox>
+											</f:fields>
+										</f:FormElement> -->
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+				</content>
+			</Panel>
+		</semantic:content>
+		
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>		
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+	</semantic:FullscreenPage>
+</mvc:View>
