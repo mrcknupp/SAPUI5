@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog id="valueHelpProgramacao" title="Programação">
+		<content>
+
+			<sap.ui.layout.form:SimpleForm
+				xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true"
+				layout="ResponsiveGridLayout" id="formFragmentProgramacao">
+				<sap.ui.layout.form:content>
+					<Label text="Válido desde" />
+					<DatePicker id="inValidoDesdeFragment" width="300px"
+						displayFormat="dd/MM/yyyy" value="" />
+					<Label text="Válido até" />
+					<DatePicker id="inValidoAteFragment" width="300px"
+						displayFormat="dd/MM/yyyy" value="" />
+					<Label text="UF" />
+					<MultiInput xmlns="sap.m" width="300px" id="inUF"
+						tokenChange="onChangeEstadoFragment" showValueHelp="true"
+						valueHelpRequest="onEstadoFragmentHelp" valueHelpOnly="true">
+					</MultiInput>
+					<Label text="Município" />
+					<MultiInput xmlns="sap.m" width="300px" id="inMunicipio"
+						tokenChange="onChangeMunicipioFragment" showValueHelp="true"
+						valueHelpRequest="onCityFragmentHelp" valueHelpOnly="true">
+					</MultiInput>
+					<Label text="Bairro" />
+					<MultiInput xmlns="sap.m" width="300px" id="inBairro"
+						showValueHelp="true" valueHelpRequest="onBairroFragmentHelp"
+						valueHelpOnly="true">
+					</MultiInput>
+				</sap.ui.layout.form:content>
+			</sap.ui.layout.form:SimpleForm>
+		</content>
+
+		<buttons>
+			<Button text="Gravar" press="onFragmentFilterAcaoSelect" type="Accept" />
+
+			<Button text="Cancelar" press="onFragmentCancel" type="Cancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

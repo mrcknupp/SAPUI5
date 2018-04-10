@@ -1,0 +1,156 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	controllerName="com.cpfl.distrib.controller.Object">
+
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:content>
+			<Panel id="pnlDadosGerais" width="95%" class="sapUiResponsiveMargin">
+				<content>
+					<Panel id="pnlAcaoCobranca" backgroundDesign="Solid">
+						<content>
+							<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1"
+								columnsM="2">
+								<f:layout>
+									<f:ResponsiveGridLayout />
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer title="Dados Básicos" id="__container8"
+										adjustLabelSpan="true" columnsM="2">
+										<f:formElements>
+											<f:FormElement  label="{i18n>lblEmpresa}">
+												<!-- <f:fields> <Input value="{ACTION_ID}" id="inActionId" visible="false"/> 
+													</f:fields> -->
+												<f:fields>
+													<ComboBox value="{T001_BUKRS}" selectedKey="{BUKRS}"
+														editable="{objectView>/formEditable}" id="comboEmpresa"
+														width="300px" textAlign="Begin" textDirection="LTR"
+														items="{ path: '/empresaOData' }" selectionChange="openCompany">
+														<items>
+															<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+														</items>
+													</ComboBox>
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblAcao}">
+												<f:fields>
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inAcao" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onAcaoHelp"
+														valueHelpOnly="true" tokenChange="onChangeAcao">
+													</MultiInput>
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblUF}">
+												<f:fields>
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inEstadoCentro" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onEstadoHelp" tokenChange="onChangeEstado"
+														valueHelpOnly="true">
+													</MultiInput>
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblMunicipio}">
+												<f:fields>
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inMunicipio" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onCityHelp" tokenChange="onChangeCidade"
+														valueHelpOnly="true">
+													</MultiInput>
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblBairro}">
+												<f:fields>
+													<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+														width="300px" id="inBairro" enableMultiLineMode="false"
+														showValueHelp="true" valueHelpRequest="onBairroHelp"
+														valueHelpOnly="true">
+													</MultiInput>
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblPercentual}">
+												<f:fields>
+													<Input width="300px" type="Number" id="inPercentual"
+														textAlign="Begin" textDirection="LTR" value="{PERCENTUAL_DISTRIBUICAO}"
+														editable="{objectView>/formEditable}" />
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblPercDist}">
+												<f:fields>
+													<Input value="" width="300px" id="inDistrib"
+														textAlign="Begin" textDirection="LTR" editable="false" />
+												</f:fields>
+											</f:FormElement>
+
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer title="{i18n>lblPeriodicidade}"
+										id="__container2">
+										<f:formElements>
+											<f:FormElement label="{i18n>lblValDesde}">
+												<f:fields>
+													<!-- <DatePicker id="inValidoDesde" width="300px" value="{VALID_FROM}" 
+														editable="{objectView>/formEditable}"/> -->
+													<DatePicker id="inValidoDesde" width="300px"
+														displayFormat="dd/MM/yyyy"
+														value="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}"
+														editable="{objectView>/formEditable}" />
+												</f:fields>
+											</f:FormElement>
+
+											<f:FormElement label="{i18n>lblValAte}">
+												<f:fields>
+													<DatePicker id="inValidoAte" width="300px"
+														displayFormat="dd/MM/yyyy"
+														value="{ path: 'VALID_UNTIL', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}"
+														editable="{objectView>/formEditable}" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="">
+												<f:fields>
+													<Label text="" />
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+						</content>
+					</Panel>
+				</content>
+			</Panel>
+		</semantic:content>
+	
+		<!--  BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>		
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

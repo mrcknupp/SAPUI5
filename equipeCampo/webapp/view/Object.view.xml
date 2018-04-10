@@ -1,0 +1,425 @@
+<mvc:View xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="com.cpfl.equipecampo.controller.Object">
+	<semantic:FullscreenPage id="page2"
+		navButtonPress="onNavBack" showNavButton="true" title="{objectView>/viewTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Panel id="__panel0" width="100%">
+				<content>
+					<Panel id="pnlDadosGerais" width="95%" class="sapUiResponsiveMargin">
+						<content>
+							<HBox width="100%" id="hbDados" alignItems="Start"
+								renderType="Bare">
+								<items>
+									<Panel id="pnlAcaoCobranca" backgroundDesign="Solid">
+										<content>
+											<f:Form id="FormToolbar" editable="true"
+												ariaLabelledBy="Title1">
+												<f:layout>
+													<f:ResponsiveGridLayout />
+												</f:layout>
+												<f:formContainers>
+													<f:FormContainer title="{i18n>lblDadosBasicos}"
+														id="__container8" adjustLabelSpan="true" columnsM="2">
+														<f:formElements>
+															<f:FormElement label="Centro de Trabalho">
+																<f:fields>
+																	<Input value="{NAME}" width="300px" id="inCentroTrabalho"
+																		textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Nome do centro de trabalho">
+																<f:fields>
+																	<Input value="{DESCRIPTION}" width="300px"
+																		id="inNomeCentroTrabalho" textAlign="Begin"
+																		textDirection="LTR" editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+
+															<f:FormElement label="País do centro de trabalho">
+																<f:fields>
+																	<Input value="{COUNTRY}" width="300px" id="inPaisCentro"
+																		textAlign="Begin" textDirection="LTR" editable="false" />
+																</f:fields>
+															</f:FormElement>
+
+															<f:FormElement label="Estado do centro de trabalho">
+																<f:fields>
+																	<MultiInput xmlns="sap.m" tokenChange="onChangeEstado"
+																		editable="{objectView>/formEditable}" width="300px"
+																		id="inEstadoCentro" showValueHelp="true"
+																		valueHelpRequest="onEstadoHelp" valueHelpOnly="true">
+																	</MultiInput>
+																</f:fields>
+															</f:FormElement>
+
+															<f:FormElement label="Cidade do centro de trabalho">
+																<f:fields>
+																	<MultiInput xmlns="sap.m"
+																		editable="{objectView>/formEditable}" width="300px"
+																		id="inCidadeCentro" showValueHelp="true"
+																		valueHelpRequest="onCityHelp" valueHelpOnly="true">
+																	</MultiInput>
+																</f:fields>
+															</f:FormElement>
+
+
+															<f:FormElement label="">
+																<f:fields>
+																	<CheckBox id="chkGeo" text="Geo Referenciamento"
+																		editable="{objectView>/formEditable}" select="onPressGeo"
+																		width="150px" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Latitude base"
+																visible="{objectView>/coordenadas}">
+																<f:fields>
+																	<Input value="{BASE_LATITUDE}" width="100px" id="inLatitude"
+																		textAlign="Begin" textDirection="LTR" type="Number"
+																		editable="{objectView>/formEditable}" visible="{objectView>/coordenadas}" />
+																</f:fields>
+															</f:FormElement>
+
+															<f:FormElement label="Longitude base"
+																visible="{objectView>/coordenadas}">
+																<f:fields>
+																	<Input value="{BASE_LONGITUDE}" width="100px"
+																		type="Number" id="inLongitude" textAlign="Begin"
+																		textDirection="LTR" editable="{objectView>/formEditable}"
+																		visible="{objectView>/coordenadas}" />
+																</f:fields>
+															</f:FormElement>
+
+															<f:FormElement label="Capacidade/dia">
+																<f:fields>
+																	<Input value="{CAPACITY}" width="100px" id="inCapacidade"
+																		type="Number" textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Número de centróides">
+																<f:fields>
+																	<Input value="{QTD_CENTROID}" width="100px" id="inCentroide"
+																		type="Number" textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="">
+																<f:fields>
+																	<CheckBox id="chkEquipe" text="Equipe Própria"
+																		editable="{objectView>/formEditable}" width="100px" />
+																	<CheckBox id="chkAtivo" text="Ativo"
+																		editable="{objectView>/formEditable}" width="50px" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Tipo de instalação">
+																<f:fields>
+																	<MultiInput width="300px" id="inInstalacao"
+																		enableMultiLineMode="true" showValueHelp="true"
+																		valueHelpRequest="onInstalacaoHelp" textAlign="Begin"
+																		textDirection="LTR" valueHelpOnly="true"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Tipo de serviço">
+																<f:fields>
+																	<MultiInput width="300px" id="inServico"
+																		enableMultiLineMode="true" showValueHelp="true"
+																		valueHelpRequest="onServicoHelp" textAlign="Begin"
+																		textDirection="LTR" valueHelpOnly="true"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="">
+																<f:fields>
+																	<CheckBox id="chkRural" text="Rural"
+																		editable="{objectView>/formEditable}" width="100px" />
+																	<CheckBox id="chkUrbano" text="Urbano"
+																		editable="{objectView>/formEditable}" width="50px" />
+																</f:fields>
+															</f:FormElement>
+															<f:FormElement label="Qtd. Cesta">
+																<f:fields>
+																	<Input value="{QTD_BASKET}" width="100px" id="inQtdBasket"
+																		type="Number" textAlign="Begin" textDirection="LTR"
+																		editable="{objectView>/formEditable}" />
+																</f:fields>
+															</f:FormElement>
+														</f:formElements>
+													</f:FormContainer>
+													<f:FormContainer title="{i18n>lbPeriodicidade}"
+														id="__container2">
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="true"
+																	text="{i18n>lbDiaria}" id="radioDiario" editable="{objectView>/formEditable}"
+																	select="onRadioPress" />
+																<CheckBox id="chkDSabado" text="{i18n>lbSabado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+																<CheckBox id="chkDDomingo" text="{i18n>lbDomingo}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+																<CheckBox id="chkDFeriado" text="{i18n>lbFeriado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/diariaVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="false"
+																	text="{i18n>lbSemanal}" editable="{objectView>/formEditable}"
+																	select="onRadioPress" id="radioSemanal" />
+																<CheckBox id="chkSDomingo" text="{i18n>lbDomingo}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSSegunda" text="{i18n>lbSegunda}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSTerca" text="{i18n>lbTerca}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<Label text="" />
+																<CheckBox id="chkSQuarta" text="{i18n>lbQuarta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSQuinta" text="{i18n>lbQuinta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<CheckBox id="chkSSexta" text="{i18n>lbSexta}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<Label text="" />
+																<CheckBox id="chkSSabado" text="{i18n>lbSabado}"
+																	editable="{objectView>/formEditable}" visible="{objectView>/semanalVisible}" />
+																<Label text="" />
+																<Label text="" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<RadioButton fieldGroupIds="RB2"
+																	groupName="GroupInputListItem2" selected="false"
+																	text="{i18n>lbMensal}" editable="{objectView>/formEditable}"
+																	select="onRadioPress" id="radioMensal" />
+																<ComboBox value="{TRIGGER_DAY_MONTH}"
+																	selectedKey="{TRIGGER_DAY_MONTH}" editable="{objectView>/formEditable}"
+																	id="inMensal" width="300px" textAlign="Begin"
+																	textDirection="LTR" visible="{objectView>/mensalVisible}">
+																	<items>
+																		<core:ListItem key="1" text="1" />
+																		<core:ListItem key="2" text="2" />
+																		<core:ListItem key="3" text="3" />
+																		<core:ListItem key="4" text="4" />
+																		<core:ListItem key="5" text="5" />
+																		<core:ListItem key="6" text="6" />
+																		<core:ListItem key="7" text="7" />
+																		<core:ListItem key="8" text="8" />
+																		<core:ListItem key="9" text="9" />
+																		<core:ListItem key="10" text="10" />
+																		<core:ListItem key="11" text="11" />
+																		<core:ListItem key="12" text="12" />
+																		<core:ListItem key="13" text="13" />
+																		<core:ListItem key="14" text="14" />
+																		<core:ListItem key="15" text="15" />
+																		<core:ListItem key="16" text="16" />
+																		<core:ListItem key="17" text="17" />
+																		<core:ListItem key="18" text="18" />
+																		<core:ListItem key="19" text="19" />
+																		<core:ListItem key="20" text="20" />
+																		<core:ListItem key="21" text="21" />
+																		<core:ListItem key="21" text="22" />
+																		<core:ListItem key="23" text="23" />
+																		<core:ListItem key="24" text="24" />
+																		<core:ListItem key="25" text="25" />
+																		<core:ListItem key="26" text="26" />
+																		<core:ListItem key="27" text="27" />
+																		<core:ListItem key="28" text="28" />
+																		<core:ListItem key="29" text="29" />
+																		<core:ListItem key="30" text="30" />
+																		<core:ListItem key="31" text="31" />
+																	</items>
+																</ComboBox>
+																<Label text="" />
+																<Label text="" />
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement>
+															<Label text="" />
+															<Label text="" />
+														</f:FormElement>
+														<f:FormElement>
+															<Label text="Critérios de priorização das cestas"></Label>
+														</f:FormElement>
+														<f:FormElement>
+
+															<ComboBox value="{BASKET_PRIORITIZATION}"
+																selectedKey="{BASKET_PRIORITIZATION}" editable="{objectView>/formEditable}"
+																id="inBasket" width="270px" textAlign="Begin"
+																textDirection="LTR">
+																<items>
+																	<core:ListItem key="1"
+																		text="1 - VALOR TOTAL DA DIVIDA" />
+																	<core:ListItem key="2"
+																		text="2 - VALOR TOTAL DO PDD" />
+																</items>
+															</ComboBox>
+														</f:FormElement>
+														<f:FormElement>
+															<Label text="Ordem de Execução da Equipe"></Label>
+														</f:FormElement>
+														<f:FormElement>
+															<f:fields>
+																<Input value="{EXECUTION_ORDER}" width="100px" id="inExec"
+																	type="Number" textAlign="Begin" textDirection="LTR"
+																	editable="{objectView>/formEditable}" />
+															</f:fields>
+														</f:FormElement>
+													</f:FormContainer>
+												</f:formContainers>
+											</f:Form>
+										</content>
+									</Panel>
+								</items>
+							</HBox>
+						</content>
+					</Panel>
+					<Panel id="__panel4" class="sapUiResponsiveMargin" width="95%">
+						<f:Form id="FormToolbar2" editable="true" ariaLabelledBy="Title1">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer ariaLabelledBy="Title2"
+									title="Parâmetros de seleção por coordenadas (*em metros)">
+									<f:formElements>
+
+
+										<f:FormElement label="Raio mínimo">
+											<f:fields>
+												<Input value="{RADIUS_MIN}" width="100px" id="inRaioMin"
+													type="Number" textAlign="Begin" textDirection="LTR"
+													editable="{objectView>/formEditable}" />
+											</f:fields>
+
+										</f:FormElement>
+
+										<f:FormElement label="Raio máximo">
+											<f:fields>
+												<Input value="{RADIUS_MAX}" width="100px" id="inRaioMax"
+													type="Number" textAlign="Begin" textDirection="LTR"
+													editable="{objectView>/formEditable}" />
+											</f:fields>
+
+										</f:FormElement>
+
+										<f:FormElement label="Incremento">
+											<f:fields>
+												<Input value="{RADIUS_INCREMENT}" width="100px" id="inIncremento"
+													type="Number" textAlign="Begin" textDirection="LTR"
+													editable="{objectView>/formEditable}" />
+											</f:fields>
+
+										</f:FormElement>
+
+
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel id="__panel5" class="sapUiResponsiveMargin" width="95%"
+						visible="{objectView>/programacaoVisible}">
+						<f:Form id="FormToolbar3" editable="true" ariaLabelledBy="Title1">
+							<f:layout>
+								<f:ResponsiveGridLayout />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer ariaLabelledBy="Title2"
+									title="Programação da área de atuação">
+									<f:formElements>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<Table id="tblCoordenadas" width="auto" mode="SingleSelectMaster"
+							class="sapUiResponsiveMargin" items="{acoesModel>/tableItems}"
+							noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+							updateFinished="onUpdateFinished" growing="true"
+							growingScrollToLoad="true">
+							<headerToolbar>
+								<Toolbar>
+									<ToolbarSpacer />
+									<Button text="{i18n>lblIncluirProgramacaoText}" id="buttonIncluirAcao"
+										press="onPressIncluirAcao" icon="sap-icon://add" />
+									<Button text="Alterar" id="buttonAlterarProgramacao"
+										press="onPressAlterarProgamacao" icon="sap-icon://edit" />
+									<Button text="{i18n>objectButtonApagarText}" id="__button0"
+										press="onDeleteActionRow" icon="sap-icon://delete" />
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="ValidoDesdeColumn">
+									<Text text="Válido desde" id="validoDesdeColumnTitle" />
+								</Column>
+								<Column id="ValidoAteColumn">
+									<Text text="Válido até" id="validoAteColumnTitle" />
+								</Column>
+								<Column id="ufColumn">
+									<Text text="UF" id="ufColumnTitle" />
+								</Column>
+								<Column id="municipioColumn">
+									<Text text="Município" id="municipioColumnTitle" />
+								</Column>
+								<Column id="bairroColumn">
+									<Text text="Bairro" id="bairroColumntTile" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<DatePicker id="inValidoDesde" width="300px"
+											value="{acoesModel>VALID_FROM}" displayFormat="dd/MM/yyyy"
+											editable="false" />
+										<DatePicker id="inValidoAte" width="300px"
+											value="{acoesModel>VALID_UNTIL}" displayFormat="dd/MM/yyyy"
+											editable="false" />
+										<ObjectAttribute text="{acoesModel>REGION_NAME}" />
+										<ObjectAttribute text="{acoesModel>CITY_NAME}" />
+										<ObjectAttribute text="{acoesModel>CITYP_NAME}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+					</Panel>
+				</content>
+			</Panel>
+		</semantic:content>
+		
+		<!--  BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>			
+	</semantic:FullscreenPage>
+</mvc:View>

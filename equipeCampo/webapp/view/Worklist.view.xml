@@ -1,0 +1,149 @@
+<mvc:View controllerName="com.cpfl.equipecampo.controller.Worklist"
+	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:FullscreenPage id="page"
+		semanticRuleSet="Optimized" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel id="pnlFiltro" headerText="Dados Gerais" class="sapUiResponsiveMargin"
+				width="95%" visible="true">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1"
+					class="sapUiSmallMargin">
+					<f:layout>
+						<f:ResponsiveGridLayout />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer ariaLabelledBy="Title2">
+							<f:formElements>
+								<f:FormElement label="{i18n>lblCentroTrabalho}">
+									<f:fields>
+										<Input width="300px" id="inCentroTrabalho" textAlign="Begin"
+											textDirection="LTR" valueHelpRequest="onCentroHelp"
+											showValueHelp="false" showSuggestion="true" suggestionItems="{/servicoCampoOData}">
+
+											<suggestionItems>
+												<core:Item key="{SERVICE_TEAM_ID}" text="{NAME}" />
+											</suggestionItems>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+								<!-- <f:FormElement label="{i18n>lblTipoCentroTrabalho}"> <f:fields> 
+									<Input width="300px" id="inTipoCentroTrabalho" textAlign="Begin" textDirection="LTR" 
+									valueHelpRequest="onTipoCentroHelp" showValueHelp="true" /> </f:fields> </f:FormElement> -->
+
+								<f:FormElement label="{i18n>lblTipoEquipe}">
+									<f:fields>
+										<Input width="300px" id="inEquipe" textAlign="Begin"
+											textDirection="LTR" valueHelpRequest="onEquipeHelp"
+											showValueHelp="true" />
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement label="{i18n>lblMunicipio}">
+									<f:fields>
+										<Input width="300px" id="inMunicipio" textAlign="Begin"
+											textDirection="LTR" valueHelpRequest="onMunicipioHelp"
+											showValueHelp="true" />
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement label="">
+									<f:fields>
+										<Button text="{i18n>lblFiltar}" width="100px" id="btnFilter"
+											press="onFilter" icon="sap-icon://filter" type="Emphasized" />
+										<Button text="{i18n>lblLimpar}" width="100px" id="btnRefresh"
+											press="onClear" icon="sap-icon://clear-filter">
+											<layoutData>
+												<l:GridData span="L9 M1 S1" />
+											</layoutData>
+										</Button>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</Panel>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin"
+				items="{ path: '/servicoCampoOData', sorter: { path: 'NAME', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" />
+						<ToolbarSpacer />
+						<content>
+							<Button width="100px" id="btnNovo" text="{i18n>lblNovo}"
+								icon="sap-icon://add" press="onPressNew" type="Emphasized" />
+							<Label text="{i18n>lblFiltro}" width="2%" id="__label0" />
+							<Switch id="btnSwitch" change="onSwitch" state="true" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="nameColumn" width="30%">
+						<Text text="{i18n>lbCentroTrabalho}" id="nameColumnTitle" />
+					</Column>
+					<Column id="descricaoColumn" width="25%">
+						<Text text="{i18n>lblDescricao}" id="descricaoColumnTitle" />
+					</Column>
+					<Column id="ativoColumn" width="5%">
+						<Text text="{i18n>lblAtivo}" id="ativoColumnTitle" />
+					</Column>
+					<Column id="equipeColumn" width="10%">
+						<Text text="{i18n>lblEquipePropria}" id="equipeColumnTitle" />
+					</Column>
+					<Column id="periodicidadeColumn" width="10%">
+						<Text text="{i18n>lblPeriodicidade}" id="periodicidadeColumnTitle" />
+					</Column>
+					<Column id="saturacaoColumn" width="10%">
+						<Text text="{i18n>lblSaturacao}" id="saturacaoColumnTitle" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{NAME}" />
+							<ObjectAttribute text="{DESCRIPTION}" />
+							<ComboBox value="{{IF_ACTIVE_DESCRIPTION}}" selectedKey="{IF_ACTIVE}"
+								id="comboAtivo" items="{ path: '/servicoCampoOData' }" editable="false">
+								<items>
+									<core:ListItem key="{IF_ACTIVE}" text="{IF_ACTIVE_DESCRIPTION}" />
+								</items>
+							</ComboBox>
+							<ComboBox value="{IF_OWN_DESCRIPTION}" selectedKey="{IF_OWN}"
+								id="comboEquipe" items="{ path: '/servicoCampoOData' }"
+								editable="false">
+								<items>
+									<core:ListItem key="{IF_OWN}" text="{IF_OWN_DESCRIPTION}" />
+								</items>
+							</ComboBox>
+							<ComboBox value="{TRIGGER_NAME}" selectedKey="{TRIGGER_PERIODICITY}"
+								id="comboPeriodicidade" items="{ path: '/servicoCampoOData' }"
+								editable="false">
+								<items>
+									<core:ListItem key="{TRIGGER_PERIODICITY}" text="{TRIGGER_NAME}" />
+								</items>
+							</ComboBox>
+							<ObjectAttribute text="{CAPACITY}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail"
+				press="onShareEmailPress" />
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam"
+				visible="{FLP>/isShareInJamActive}" press="onShareInJamPress" />
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile"
+				title="{worklistView>/saveAsTileTitle}" />
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>

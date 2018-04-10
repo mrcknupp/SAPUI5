@@ -1,0 +1,521 @@
+[{
+	"SERVICE_TEAM_ID": 1819,
+	"NAME": "NAME 1",
+	"DESCRIPTION": "DESCRIPTION 1",
+	"IF_OWN": 1180,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 1",
+	"IF_ACTIVE": 6811,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 1",
+	"BASE_LATITUDE": 4141.93,
+	"RADIUS_MIN": 5863,
+	"RADIUS_MAX": 4622,
+	"RADIUS_INCREMENT": 392,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 1",
+	"TRIGGER_NAME": "TRIGGER_NAME 1",
+	"TRIGGER_MON": 3603,
+	"TRIGGER_TUE": 7959,
+	"TRIGGER_WED": 4741,
+	"TRIGGER_THU": 5626,
+	"TRIGGER_FRI": 4814,
+	"TRIGGER_SAT": 2506,
+	"TRIGGER_SUN": 94,
+	"TRIGGER_DAY_MONTH": 5620,
+	"TRIGGER_HOLIDAY": 3942,
+	"EXECUTION_ORDER": 4546,
+	"COUNTRY": "COUNTRY 1",
+	"REGION": "REGION 1",
+	"REGION_NAME": "REGION_NAME 1",
+	"CITY_CODE": "CITY_CODE 1",
+	"CITY_NAME": "CITY_NAME 1",
+	"QTD_CENTROID": 8,
+	"BASKET_PRIORITIZATION": 2246,
+	"CAPACITY": 2364,
+	"IF_GEOREFERENCING": 2435,
+	"__metadata": {
+		"uri": "servicoCampoOData(1819)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1819)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1819)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1819)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 3391,
+	"NAME": "NAME 2",
+	"DESCRIPTION": "DESCRIPTION 2",
+	"IF_OWN": 2692,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 2",
+	"IF_ACTIVE": 6634,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 2",
+	"BASE_LATITUDE": 4475.75,
+	"RADIUS_MIN": 1436,
+	"RADIUS_MAX": 279,
+	"RADIUS_INCREMENT": 6411,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 2",
+	"TRIGGER_NAME": "TRIGGER_NAME 2",
+	"TRIGGER_MON": 9673,
+	"TRIGGER_TUE": 3084,
+	"TRIGGER_WED": 9968,
+	"TRIGGER_THU": 1723,
+	"TRIGGER_FRI": 4383,
+	"TRIGGER_SAT": 5598,
+	"TRIGGER_SUN": 9136,
+	"TRIGGER_DAY_MONTH": 4787,
+	"TRIGGER_HOLIDAY": 6144,
+	"EXECUTION_ORDER": 5318,
+	"COUNTRY": "COUNTRY 2",
+	"REGION": "REGION 2",
+	"REGION_NAME": "REGION_NAME 2",
+	"CITY_CODE": "CITY_CODE 2",
+	"CITY_NAME": "CITY_NAME 2",
+	"QTD_CENTROID": 8696,
+	"BASKET_PRIORITIZATION": 6583,
+	"CAPACITY": 4873,
+	"IF_GEOREFERENCING": 1828,
+	"__metadata": {
+		"uri": "servicoCampoOData(3391)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(3391)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(3391)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(3391)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 4146,
+	"NAME": "NAME 3",
+	"DESCRIPTION": "DESCRIPTION 3",
+	"IF_OWN": 1180,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 3",
+	"IF_ACTIVE": 5565,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 3",
+	"BASE_LATITUDE": 4860.48,
+	"RADIUS_MIN": 6339,
+	"RADIUS_MAX": 6894,
+	"RADIUS_INCREMENT": 1428,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 3",
+	"TRIGGER_NAME": "TRIGGER_NAME 3",
+	"TRIGGER_MON": 5129,
+	"TRIGGER_TUE": 4793,
+	"TRIGGER_WED": 2421,
+	"TRIGGER_THU": 4234,
+	"TRIGGER_FRI": 955,
+	"TRIGGER_SAT": 518,
+	"TRIGGER_SUN": 6096,
+	"TRIGGER_DAY_MONTH": 4026,
+	"TRIGGER_HOLIDAY": 625,
+	"EXECUTION_ORDER": 4584,
+	"COUNTRY": "COUNTRY 3",
+	"REGION": "REGION 3",
+	"REGION_NAME": "REGION_NAME 3",
+	"CITY_CODE": "CITY_CODE 3",
+	"CITY_NAME": "CITY_NAME 3",
+	"QTD_CENTROID": 8304,
+	"BASKET_PRIORITIZATION": 2616,
+	"CAPACITY": 5536,
+	"IF_GEOREFERENCING": 7335,
+	"__metadata": {
+		"uri": "servicoCampoOData(4146)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(4146)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(4146)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(4146)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 6898,
+	"NAME": "NAME 4",
+	"DESCRIPTION": "DESCRIPTION 4",
+	"IF_OWN": 5961,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 4",
+	"IF_ACTIVE": 140,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 4",
+	"BASE_LATITUDE": 1071.51,
+	"RADIUS_MIN": 6526,
+	"RADIUS_MAX": 6201,
+	"RADIUS_INCREMENT": 1501,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 4",
+	"TRIGGER_NAME": "TRIGGER_NAME 4",
+	"TRIGGER_MON": 6069,
+	"TRIGGER_TUE": 6953,
+	"TRIGGER_WED": 8807,
+	"TRIGGER_THU": 4958,
+	"TRIGGER_FRI": 7092,
+	"TRIGGER_SAT": 6445,
+	"TRIGGER_SUN": 2888,
+	"TRIGGER_DAY_MONTH": 9411,
+	"TRIGGER_HOLIDAY": 6549,
+	"EXECUTION_ORDER": 4029,
+	"COUNTRY": "COUNTRY 4",
+	"REGION": "REGION 4",
+	"REGION_NAME": "REGION_NAME 4",
+	"CITY_CODE": "CITY_CODE 4",
+	"CITY_NAME": "CITY_NAME 4",
+	"QTD_CENTROID": 2428,
+	"BASKET_PRIORITIZATION": 7380,
+	"CAPACITY": 1787,
+	"IF_GEOREFERENCING": 3499,
+	"__metadata": {
+		"uri": "servicoCampoOData(6898)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(6898)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(6898)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(6898)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 986,
+	"NAME": "NAME 5",
+	"DESCRIPTION": "DESCRIPTION 5",
+	"IF_OWN": 7187,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 5",
+	"IF_ACTIVE": 816,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 5",
+	"BASE_LATITUDE": 8681.61,
+	"RADIUS_MIN": 7461,
+	"RADIUS_MAX": 617,
+	"RADIUS_INCREMENT": 4403,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 5",
+	"TRIGGER_NAME": "TRIGGER_NAME 5",
+	"TRIGGER_MON": 4361,
+	"TRIGGER_TUE": 193,
+	"TRIGGER_WED": 3775,
+	"TRIGGER_THU": 3450,
+	"TRIGGER_FRI": 3391,
+	"TRIGGER_SAT": 2390,
+	"TRIGGER_SUN": 9044,
+	"TRIGGER_DAY_MONTH": 88,
+	"TRIGGER_HOLIDAY": 3015,
+	"EXECUTION_ORDER": 1741,
+	"COUNTRY": "COUNTRY 5",
+	"REGION": "REGION 5",
+	"REGION_NAME": "REGION_NAME 5",
+	"CITY_CODE": "CITY_CODE 5",
+	"CITY_NAME": "CITY_NAME 5",
+	"QTD_CENTROID": 1083,
+	"BASKET_PRIORITIZATION": 4145,
+	"CAPACITY": 3137,
+	"IF_GEOREFERENCING": 4927,
+	"__metadata": {
+		"uri": "servicoCampoOData(986)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(986)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(986)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(986)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 9228,
+	"NAME": "NAME 6",
+	"DESCRIPTION": "DESCRIPTION 6",
+	"IF_OWN": 8915,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 6",
+	"IF_ACTIVE": 6526,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 6",
+	"BASE_LATITUDE": 6509.27,
+	"RADIUS_MIN": 4959,
+	"RADIUS_MAX": 5397,
+	"RADIUS_INCREMENT": 8934,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 6",
+	"TRIGGER_NAME": "TRIGGER_NAME 6",
+	"TRIGGER_MON": 8447,
+	"TRIGGER_TUE": 1016,
+	"TRIGGER_WED": 3548,
+	"TRIGGER_THU": 467,
+	"TRIGGER_FRI": 6612,
+	"TRIGGER_SAT": 1105,
+	"TRIGGER_SUN": 1966,
+	"TRIGGER_DAY_MONTH": 1377,
+	"TRIGGER_HOLIDAY": 2763,
+	"EXECUTION_ORDER": 7010,
+	"COUNTRY": "COUNTRY 6",
+	"REGION": "REGION 6",
+	"REGION_NAME": "REGION_NAME 6",
+	"CITY_CODE": "CITY_CODE 6",
+	"CITY_NAME": "CITY_NAME 6",
+	"QTD_CENTROID": 3922,
+	"BASKET_PRIORITIZATION": 7648,
+	"CAPACITY": 9611,
+	"IF_GEOREFERENCING": 1089,
+	"__metadata": {
+		"uri": "servicoCampoOData(9228)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(9228)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(9228)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(9228)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 5213,
+	"NAME": "NAME 7",
+	"DESCRIPTION": "DESCRIPTION 7",
+	"IF_OWN": 8445,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 7",
+	"IF_ACTIVE": 2936,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 7",
+	"BASE_LATITUDE": 8737.31,
+	"RADIUS_MIN": 9513,
+	"RADIUS_MAX": 2091,
+	"RADIUS_INCREMENT": 7533,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 7",
+	"TRIGGER_NAME": "TRIGGER_NAME 7",
+	"TRIGGER_MON": 784,
+	"TRIGGER_TUE": 7472,
+	"TRIGGER_WED": 174,
+	"TRIGGER_THU": 2612,
+	"TRIGGER_FRI": 2285,
+	"TRIGGER_SAT": 3743,
+	"TRIGGER_SUN": 3968,
+	"TRIGGER_DAY_MONTH": 1991,
+	"TRIGGER_HOLIDAY": 8624,
+	"EXECUTION_ORDER": 8262,
+	"COUNTRY": "COUNTRY 7",
+	"REGION": "REGION 7",
+	"REGION_NAME": "REGION_NAME 7",
+	"CITY_CODE": "CITY_CODE 7",
+	"CITY_NAME": "CITY_NAME 7",
+	"QTD_CENTROID": 5068,
+	"BASKET_PRIORITIZATION": 2598,
+	"CAPACITY": 5164,
+	"IF_GEOREFERENCING": 502,
+	"__metadata": {
+		"uri": "servicoCampoOData(5213)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(5213)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(5213)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(5213)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 1625,
+	"NAME": "NAME 8",
+	"DESCRIPTION": "DESCRIPTION 8",
+	"IF_OWN": 3775,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 8",
+	"IF_ACTIVE": 1919,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 8",
+	"BASE_LATITUDE": 4168.78,
+	"RADIUS_MIN": 5238,
+	"RADIUS_MAX": 5900,
+	"RADIUS_INCREMENT": 4133,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 8",
+	"TRIGGER_NAME": "TRIGGER_NAME 8",
+	"TRIGGER_MON": 4902,
+	"TRIGGER_TUE": 6199,
+	"TRIGGER_WED": 6068,
+	"TRIGGER_THU": 7045,
+	"TRIGGER_FRI": 7096,
+	"TRIGGER_SAT": 931,
+	"TRIGGER_SUN": 4134,
+	"TRIGGER_DAY_MONTH": 6252,
+	"TRIGGER_HOLIDAY": 4918,
+	"EXECUTION_ORDER": 806,
+	"COUNTRY": "COUNTRY 8",
+	"REGION": "REGION 8",
+	"REGION_NAME": "REGION_NAME 8",
+	"CITY_CODE": "CITY_CODE 8",
+	"CITY_NAME": "CITY_NAME 8",
+	"QTD_CENTROID": 1180,
+	"BASKET_PRIORITIZATION": 9604,
+	"CAPACITY": 4673,
+	"IF_GEOREFERENCING": 1286,
+	"__metadata": {
+		"uri": "servicoCampoOData(1625)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1625)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1625)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(1625)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 8897,
+	"NAME": "NAME 9",
+	"DESCRIPTION": "DESCRIPTION 9",
+	"IF_OWN": 8509,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 9",
+	"IF_ACTIVE": 6743,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 9",
+	"BASE_LATITUDE": 6046.54,
+	"RADIUS_MIN": 1780,
+	"RADIUS_MAX": 6457,
+	"RADIUS_INCREMENT": 3631,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 9",
+	"TRIGGER_NAME": "TRIGGER_NAME 9",
+	"TRIGGER_MON": 388,
+	"TRIGGER_TUE": 8691,
+	"TRIGGER_WED": 8711,
+	"TRIGGER_THU": 475,
+	"TRIGGER_FRI": 9196,
+	"TRIGGER_SAT": 3743,
+	"TRIGGER_SUN": 569,
+	"TRIGGER_DAY_MONTH": 29,
+	"TRIGGER_HOLIDAY": 5731,
+	"EXECUTION_ORDER": 5751,
+	"COUNTRY": "COUNTRY 9",
+	"REGION": "REGION 9",
+	"REGION_NAME": "REGION_NAME 9",
+	"CITY_CODE": "CITY_CODE 9",
+	"CITY_NAME": "CITY_NAME 9",
+	"QTD_CENTROID": 1665,
+	"BASKET_PRIORITIZATION": 4703,
+	"CAPACITY": 9549,
+	"IF_GEOREFERENCING": 1462,
+	"__metadata": {
+		"uri": "servicoCampoOData(8897)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8897)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8897)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8897)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}, {
+	"SERVICE_TEAM_ID": 8625,
+	"NAME": "NAME 10",
+	"DESCRIPTION": "DESCRIPTION 10",
+	"IF_OWN": 572,
+	"IF_OWN_DESCRIPTION": "IF_OWN_DESCRIPTION 10",
+	"IF_ACTIVE": 3560,
+	"IF_ACTIVE_DESCRIPTION": "IF_ACTIVE_DESCRIPTION 10",
+	"BASE_LATITUDE": 483.62,
+	"RADIUS_MIN": 4133,
+	"RADIUS_MAX": 383,
+	"RADIUS_INCREMENT": 6633,
+	"TRIGGER_PERIODICITY": "TRIGGER_PERIODICITY 10",
+	"TRIGGER_NAME": "TRIGGER_NAME 10",
+	"TRIGGER_MON": 6214,
+	"TRIGGER_TUE": 4763,
+	"TRIGGER_WED": 2385,
+	"TRIGGER_THU": 2696,
+	"TRIGGER_FRI": 8238,
+	"TRIGGER_SAT": 7510,
+	"TRIGGER_SUN": 9665,
+	"TRIGGER_DAY_MONTH": 9827,
+	"TRIGGER_HOLIDAY": 133,
+	"EXECUTION_ORDER": 6793,
+	"COUNTRY": "COUNTRY 10",
+	"REGION": "REGION 10",
+	"REGION_NAME": "REGION_NAME 10",
+	"CITY_CODE": "CITY_CODE 10",
+	"CITY_NAME": "CITY_NAME 10",
+	"QTD_CENTROID": 3018,
+	"BASKET_PRIORITIZATION": 8565,
+	"CAPACITY": 2821,
+	"IF_GEOREFERENCING": 5361,
+	"__metadata": {
+		"uri": "servicoCampoOData(8625)",
+		"type": "accs.services.servicoCampoODataType"
+	},
+	"tipoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8625)/tipoEquipeServicoCampoNav"
+		}
+	},
+	"atividadeEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8625)/atividadeEquipeServicoCampoNav"
+		}
+	},
+	"distribuicaoEquipeServicoCampoNav": {
+		"__deferred": {
+			"uri": "servicoCampoOData(8625)/distribuicaoEquipeServicoCampoNav"
+		}
+	}
+}]

@@ -1,0 +1,150 @@
+<mvc:View controllerName="com.cpfl.distrib.controller.Worklist"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel id="pnlFiltro" headerText="Dados Gerais" class="sapUiResponsiveMargin"
+				width="95%" visible="true">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1"
+					class="sapUiSmallMargin">
+					<f:layout>
+						<f:ResponsiveGridLayout />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer ariaLabelledBy="Title2">
+							<f:formElements>
+								<f:FormElement label="{i18n>lblCanalNot}">
+									<f:fields>
+										<Input xmlns="sap.m" 
+											width="300px" id="inCanalNot" 
+											showValueHelp="true" valueHelpRequest="onCanalHelp"
+											valueHelpOnly="true"/>
+										
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>lblEmpresa}">
+									<f:fields>
+										<Input xmlns="sap.m" 
+											width="300px" id="inEmpresa" 
+											showValueHelp="true" valueHelpRequest="onEmpresaHelp"
+											valueHelpOnly="true"/>
+										
+									</f:fields>
+								</f:FormElement>															
+								<f:FormElement label="{i18n>lblAcao}">
+									<f:fields>
+										<Input xmlns="sap.m" 
+											width="300px" id="inAcao" 
+											showValueHelp="true" valueHelpRequest="onAcaoHelp"
+											valueHelpOnly="true"/>
+										
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>lblUF}">
+									<f:fields>
+										<Input xmlns="sap.m" 
+											width="300px" id="inEstadoCentro" 
+											showValueHelp="true" valueHelpRequest="onEstadoHelp"
+											valueHelpOnly="true"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>lblMunicipio}">
+									<f:fields>
+										<Input xmlns="sap.m" 
+											width="300px" id="inMunicipio" 
+											showValueHelp="true" valueHelpRequest="onCityHelp"
+											valueHelpOnly="true"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="">
+									<f:fields>
+										<Button text="Filtrar" width="100px" id="btnFilter"
+											press="onFilter" icon="sap-icon://filter" type="Emphasized" />
+										<Button text="Limpar" width="100px" id="btnRefresh"
+											press="onClear" icon="sap-icon://clear-filter">
+											<layoutData>
+												<l:GridData span="L9 M1 S1" />
+											</layoutData>
+										</Button>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</Panel>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin"
+				items="{ path: '/distribuicaoOData', sorter: { path: 'ACTION_NAME', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished"
+				includeItemInSelection="true">					
+<!-- 			<Table id="table" width="auto" class="sapUiResponsiveMargin"
+				items="{
+					path: '/distribuicaoOData',
+					sorter: {
+						path: 'ACTION_NAME',
+						descending: false
+					}
+				}"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished"> -->
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" />
+						<ToolbarSpacer />
+						<content>
+							<Button width="100px" id="btnNovo" text="{i18n>btnNovo}"
+								icon="sap-icon://add" press="onPressNew" type="Emphasized" />
+							<Label text="{i18n>lbFiltro}" width="2%" id="__label0" />
+							<Switch id="btnSwitch" change="onSwitch" state="true" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="acaoColumn">
+						<Text text="{i18n>lblAcao}" id="acaoColumnTitle" />
+					</Column>
+					<Column id="estadoColumn">
+						<Text text="{i18n>lblUF}" id="estadoColumnTitle" />
+					</Column>
+					<Column id="cidadeColumn">
+						<Text text="{i18n>lblMunicipio}" id="cidadeColumnTitle" />
+					</Column>
+					<Column id="bairroColumn">
+						<Text text="{i18n>lblBairro}" id="bairroColumnTitle" />
+					</Column>
+					<Column id="percentualColumn">
+						<Text text="Percentual" id="percentualColumnTitle" />
+					</Column> 
+					<Column id="valDesdeColumn">
+						<Text text="{i18n>lblValDesde}" id="valDesdeColumnTitle" />
+					</Column>
+					<Column id="valAteColumn">
+						<Text text="{i18n>lblValAte}" id="valAteColumnTitle" />
+					</Column> 
+				</columns>
+
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{ACTION_NAME}" />
+							<ObjectIdentifier title="{REGION_NAME}" />
+							<ObjectIdentifier title="{CITY_NAME}" />
+							<ObjectIdentifier title="{CITYP_NAME}" />
+							<ObjectIdentifier title="{PERCENTUAL_DISTRIBUICAO}" />
+							<ObjectIdentifier  
+							title="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}"/>
+							<ObjectIdentifier 
+							title="{ path: 'VALID_UNTIL', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true}}"/>
+						</cells>
+					</ColumnListItem> 
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:FullscreenPage>
+
+</mvc:View>
