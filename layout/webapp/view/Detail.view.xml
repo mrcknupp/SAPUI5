@@ -1,0 +1,43 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="com.cpfl.layout.controller.Detail">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<f:SimpleForm xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns:f="sap.ui.layout.form" class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm_copy" labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="Dados Básicos">
+			    <!--title="{= ${viewModel>/mode} === 'edit'? 'Editar Layout': 'Novo Layout'}">-->
+			    <f:content>
+			        <Label xmlns="sap.m" text="LAYOUT_ID" visible="false" id="__label2"/>
+			        <Input xmlns="sap.m" name="LAYOUT_ID" id="LAYOUT_ID_id_copy" editable="false" value="0" visible="false"/>
+			        <Label xmlns="sap.m" text="Nome" required="false" id="__label3"/>
+			        <Input xmlns="sap.m" name="NAME" id="NAME_id_copy" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" value="{ path: 'NAME', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }" editable="false"/>
+			        </f:content>
+			    
+			</f:SimpleForm>
+			<f:SimpleForm xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns:f="sap.ui.layout.form" class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="CamposAtributo" labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="Campos do Layout">
+			    <f:content>
+			        <Label xmlns="sap.m" text="Atributos de filtro político" id="__label4"/>
+			        <MultiInput xmlns="sap.m" editable="false" width="100%" id="inAtributo" enableMultiLineMode="true" showValueHelp="true" suggestionItems="{ path: '/Atributo_filtros_politicos', sorter: { path: 'COLUMN_NAME' } }">
+			            <core:Item xmlns:core="sap.ui.core" key="{ID}" text="{COLUMN_NAME}"/>
+			            
+			        </MultiInput>
+			        <Label xmlns="sap.m" text="Delimitador" id="__label5"/>
+			        <Input xmlns="sap.m" width="10%" id="inDelimitador" editable="false" value="{INTEGRATION_FILE_DELIMITER}" />
+			        </f:content>
+			    
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="edit" press="onEdit"/>
+		</semantic:editAction>
+		<semantic:customFooterContent>
+			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+		</semantic:customFooterContent>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:DetailPage>
+</mvc:View>
