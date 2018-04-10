@@ -1,0 +1,31 @@
+<mvc:View controllerName="com.cpfl.motivorestricao.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+		<Panel id="createPanel" class="sapUiResponsiveMargin" width="95%" 
+		headerText="{= ${viewModel>/mode} === 'edit'? ${i18n>titleEdicaoMotivo} : ${i18n>titleCriacaoMotivo}}">
+				<content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" width="95%">
+				<f:content>
+					<Label text="{i18n>inputCodigoMotivo}" />
+					<Input name="RESTRICTION_REASON_ID" id="RESTRICTION_REASON_ID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="false" visible="{= ${viewModel>/mode} === 'edit'? true: false}"
+						value="{ path: 'RESTRICTION_REASON_ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/> 
+					<Label text="{i18n>inputDescricaoMotivo}" required="true"/>
+					<Input name="NAME" id="NAME_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'NAME', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100, nullable:false } }"/>
+				</f:content>
+			</f:SimpleForm>
+			</content>
+			</Panel>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,29 @@
+<mvc:View controllerName="com.cpfl.motivorestricao.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<!-- ObjectHeader id="objectHeader" title="{NAME}" number="{ path: 'RESTRICTION_REASON_ID' }"></ObjectHeader-->
+			<Panel id="detalhePanel" headerText="Detalhes do Motivo" class="sapUiResponsiveMargin" width="95%">
+				<content>
+			<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="false" layout="ResponsiveGridLayout" id="detalheForm" 
+			labelSpanL="4" labelSpanM="4" maxContainerCols="2">
+				<f:content>
+					<Label text="{i18n>inputCodigoMotivo}"/>
+					<Text text="{ path: 'RESTRICTION_REASON_ID', type: 'sap.ui.model.odata.type.Int32' }"/>
+					<Label text="{i18n>inputDescricaoMotivo}" />
+					<Text text="{ path: 'NAME', type: 'sap.ui.model.odata.type.String'}"/>
+				</f:content>
+			</f:SimpleForm>
+			</content>
+			</Panel>
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="edit" press="onEdit"/>
+		</semantic:editAction>
+		<semantic:customFooterContent>
+			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+		</semantic:customFooterContent>
+	
+	</semantic:DetailPage>
+</mvc:View>
