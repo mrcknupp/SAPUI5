@@ -1,0 +1,131 @@
+[{
+	"LAYOUT_ID": 8652,
+	"NAME": "NAME 1",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 1",
+	"__metadata": {
+		"uri": "layoutOData(8652)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(8652)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 5432,
+	"NAME": "NAME 2",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 2",
+	"__metadata": {
+		"uri": "layoutOData(5432)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(5432)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 9705,
+	"NAME": "NAME 3",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 3",
+	"__metadata": {
+		"uri": "layoutOData(9705)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(9705)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 9271,
+	"NAME": "NAME 4",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 4",
+	"__metadata": {
+		"uri": "layoutOData(9271)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(9271)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 4109,
+	"NAME": "NAME 5",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 5",
+	"__metadata": {
+		"uri": "layoutOData(4109)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(4109)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 9027,
+	"NAME": "NAME 6",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 6",
+	"__metadata": {
+		"uri": "layoutOData(9027)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(9027)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 3977,
+	"NAME": "NAME 7",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 7",
+	"__metadata": {
+		"uri": "layoutOData(3977)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(3977)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 3081,
+	"NAME": "NAME 8",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 8",
+	"__metadata": {
+		"uri": "layoutOData(3081)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(3081)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 8959,
+	"NAME": "NAME 9",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 9",
+	"__metadata": {
+		"uri": "layoutOData(8959)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(8959)/camposLayoutOData"
+		}
+	}
+}, {
+	"LAYOUT_ID": 8780,
+	"NAME": "NAME 10",
+	"INTEGRATION_FILE_DELIMITER": "INTEGRATION_FILE_DELIMITER 10",
+	"__metadata": {
+		"uri": "layoutOData(8780)",
+		"type": "accs.services.layoutODataType"
+	},
+	"camposLayoutOData": {
+		"__deferred": {
+			"uri": "layoutOData(8780)/camposLayoutOData"
+		}
+	}
+}]

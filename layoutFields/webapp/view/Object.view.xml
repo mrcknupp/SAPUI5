@@ -1,0 +1,69 @@
+<mvc:View controllerName="com.cpfl.layout.controller.Object"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:FullscreenPage id="page2"
+		navButtonPress="onNavBack" showNavButton="true" title="{objectView>/viewTitle}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<f:SimpleForm xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar"
+				xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+				xmlns:smart="sap.ui.comp.smartfield" xmlns:f="sap.ui.layout.form"
+				class="editableForm" columnsL="1" columnsM="1" editable="true"
+				emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm_copy"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout"
+				maxContainerCols="2" minWidth="1024" title="Dados Básicos">
+				<!--title="{= ${viewModel>/mode} === 'edit'? 'Editar Layout': 'Novo Layout'}"> -->
+				<f:content>
+					<Label xmlns="sap.m" text="LAYOUT_ID" visible="false" id="__label2" />
+					<Input xmlns="sap.m" name="LAYOUT_ID" id="inLayoutId"
+						editable="{objectView>/formEditable}" value="0" visible="false" />
+					<Label xmlns="sap.m" text="Nome" required="true" id="__label3" />
+					<Input xmlns="sap.m" name="NAME" id="inName" valueLiveUpdate="true"
+						liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'NAME', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"
+						editable="{objectView>/formEditable}" />
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar"
+				xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+				xmlns:smart="sap.ui.comp.smartfield" xmlns:f="sap.ui.layout.form"
+				class="editableForm" columnsL="1" columnsM="1" editable="true"
+				emptySpanL="4" emptySpanM="4" id="CamposAtributo" labelSpanL="3"
+				labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2"
+				minWidth="1024" title="Campos do Layout">
+				<f:content>
+					<Label xmlns="sap.m" text="Atributos de filtro político" id="__label4" />
+					<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+						width="100%" id="inAtributo" enableMultiLineMode="true"
+						showValueHelp="true" valueHelpRequest="onAtributoHelp"
+						suggestionItems="{ path: '/Atributo_filtros_politicos', sorter: { path: 'COLUMN_NAME' } }">
+						<core:Item xmlns:core="sap.ui.core" key="{ID}" text="{COLUMN_NAME}" />
+					</MultiInput>
+					<Label xmlns="sap.m" text="Delimitador" id="__label5" />
+					<Input xmlns="sap.m" width="10%" id="inDelimitador"
+						editable="{objectView>/formEditable}" value="{INTEGRATION_FILE_DELIMITER}" />				
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<!--  BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+	</semantic:FullscreenPage>
+</mvc:View>
