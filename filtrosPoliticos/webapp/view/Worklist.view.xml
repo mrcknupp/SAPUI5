@@ -1,0 +1,104 @@
+<mvc:View controllerName="com.cpfl.filtrospoliticos.controller.Worklist" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel id="pnlFiltro" class="sapUiResponsiveMargin" width="95%" visible="true">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1" class="sapUiSmallMargin">
+					<f:layout>
+						<f:ResponsiveGridLayout />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="{i18n>lbEmpresa}">
+									<f:fields>
+										<ComboBox value="List Item 1" selectedKey="{BUKRS}" id="comboEmpresa" width="300px" textAlign="Begin" textDirection="LTR" items="{ path: '/empresaOData' }">
+											<items>
+												<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+											</items>
+										</ComboBox>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>lbAcaoCobranca}">
+									<f:fields>
+<!-- 										<ComboBox value="List Item 1" selectedKey="{ACTION_ID}" id="comboAcao" width="300px" textAlign="Begin" textDirection="LTR" items="{ path: '/acaoOData' }">
+											<items>
+												<core:ListItem key="{ACTION_ID}" text="{NAME}" />
+											</items>
+										</ComboBox> -->
+										<Input xmlns="sap.m" 
+											width="300px" id="inAcao" 
+											showValueHelp="true" valueHelpRequest="onAcaoHelp"
+											valueHelpOnly="true"/>										
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="">
+									<f:fields>
+										<Button text="Filtrar" width="100px" id="btnFilter" press="onFilter" icon="sap-icon://filter" type="Emphasized" />
+										<Button text="Limpar" width="100px" id="btnRefresh" press="onClear" icon="sap-icon://clear-filter">
+											<layoutData>
+												<l:GridData span="L9 M1 S1" />
+											</layoutData>
+										</Button>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</Panel>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: '/filtroPoliticoOData', sorter: { path: 'ACTION_ID', descending: false } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" />
+						<ToolbarSpacer />
+						<!-- <SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto" /> -->
+						<content>
+							<Button width="100px" id="btnNovo" text="{i18n>btnNovo}" icon="sap-icon://add" press="onCreate" type="Emphasized" />
+							<!-- <Button width="100px" id="btnPreview" text="{i18n>btnPreview}" icon="sap-icon://detail-view" press="onPreview" type="Emphasized" /> -->
+							<Label text="{i18n>lbFiltro}" width="4%" id="__label0" />
+							<Switch id="btnSwitch" change="onSwitch" state="true" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="Column0">
+						<Text text="{i18n>btnPreview}" id="clPreview" />
+					</Column>				
+					<Column id="Column1">
+						<Text text="{i18n>Empresa}" id="clEmpresa" />
+					</Column>
+					<Column id="Column2">
+						<Text text="{i18n>Acao}" id="clAcao" />
+					</Column>
+					<Column id="Column3">
+						<Text text="{i18n>Desde}" id="clDesde" />
+					</Column>
+					<Column id="Column4">
+						<Text text="{i18n>Ate}" id="clAte" />
+					</Column>
+<!-- 					<Column id="Column5">
+						<Text text="{i18n>Count}" id="clCount" />
+					</Column> -->
+				</columns>
+
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<Button width="50px" id="btnPreview" icon="sap-icon://detail-view" press="onPreview" type="Emphasized" />
+							<ObjectIdentifier title="{BUTXT}" />
+							<ObjectAttribute text="{ path: 'ACTION_NAME', type: 'sap.ui.model.odata.type.string'}" />
+							<ObjectAttribute text="{ path: 'VALID_FROM', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+							<ObjectAttribute text="{ path: 'VALID_UNTIL', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', UTC:true }}" />
+							<!-- <ObjectAttribute text="{ path: 'RECORD_COUNT'}" /> -->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

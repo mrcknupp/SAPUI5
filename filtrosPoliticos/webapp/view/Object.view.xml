@@ -1,0 +1,450 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="com.cpfl.filtrospoliticos.controller.Object">
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{objectView>/title}"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Panel id="panel0" headerText="{i18n>DadosBasicos}" class="sapUiResponsiveMargin"
+				width="95%">
+				<content>
+					<f:Form id="FormToolbar0" editable="true" adjustLabelSpan="true"
+						columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container0"
+								adjustLabelSpan="true" columnsM="2" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Empresa}">
+										<f:fields>
+											<ComboBox selectionChange="openCompany" value="List Item 1"
+												selectedKey="{BUKRS}" id="comboEmpresa" width="250px"
+												textAlign="Begin" editable="false" textDirection="LTR"
+												items="{ path: '/empresaOData' }">
+												<items>
+													<core:ListItem key="{BUKRS}" text="{BUTXT}" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>								
+									<f:FormElement label="{i18n>lbAcaoCobranca}">
+										<f:fields>
+											<!-- <ComboBox value="List Item 1" selectedKey="{ACTION_ID}" id="comboAcao" 
+												width="250px" textAlign="Begin" editable="false" textDirection="LTR" items="{ 
+												path: '/acaoOData' }"> <items> <core:ListItem key="{ACTION_ID}" text="{NAME}" 
+												/> </items> </ComboBox> -->
+											<MultiInput xmlns="sap.m" editable="false" width="300px"
+												id="inAcao" enableMultiLineMode="false" showValueHelp="true"
+												valueHelpRequest="onAcaoHelp" valueHelpOnly="true">
+											</MultiInput>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>DayslastExec}">
+										<f:fields>
+											<Input width="150px" value="{DAYS_LAST_ACTION}" id="inDayslastExec"
+												editable="{objectView>/formEditable}" fieldWidth="100%"
+												textAlign="Begin" textDirection="LTR" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="__container1"
+								adjustLabelSpan="true" columnsM="2" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Desde}">
+										<f:fields>
+											<DatePicker id="dtValidFrom"
+												value="{path: 'VALID_FROM', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy HH:mm:ss', UTC:true }}"
+												width="150px" displayFormat="dd/MM/yyyy HH:mm:ss"
+												placeholder="dd/MM/yyyy" editable="false" textAlign="Left"
+												textDirection="LTR" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Ate}">
+										<f:fields>
+											<DatePicker id="dtValidTo"
+												value="{path: 'VALID_UNTIL', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy HH:mm:ss', UTC:true }}"
+												width="150px" displayFormat="dd/MM/yyyy HH:mm:ss"
+												placeholder="dd/MM/yyyy" editable="false" textAlign="Left"
+												textDirection="LTR" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<Panel id="panel1" headerText="{i18n>Filtros}" class="sapUiResponsiveMargin"
+				width="95%">
+				<content>
+					<f:Form id="FormToolbar1" editable="true" adjustLabelSpan="true"
+						columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container2" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Atributo}" class="sapUiSmallMargin">
+										<f:fields>
+											<!-- <ComboBox value="List Item 1" selectedKey="{COLUMN_NAME}" 
+												id="comboFAtributo" editable="{objectView>/formEditable}" width="250px" textAlign="Begin" 
+												textDirection="LTR" items="{ path: '/atributoFiltrosPoliticosOData', sorter: 
+												{path: 'COMMENTS', descending: false}}"> <items> <core:ListItem key="{COLUMN_NAME}" 
+												text="{COMMENTS}" /> </items> </ComboBox> -->
+											<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+												width="250px" id="inFAtributo" enableMultiLineMode="false"
+												showValueHelp="true" valueHelpRequest="onAtributoHelp"
+												valueHelpOnly="true">
+											</MultiInput>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Operador}">
+										<f:fields>
+											<ComboBox value="value1" selectedKey="item1"
+												selectedItemId="idEQ" id="comboFOper" editable="{objectView>/formEditable}"
+												width="100px" textAlign="Begin" textDirection="LTR">
+												<items>
+													<core:ListItem text="{objectView>/igual}"
+														key="EQ" id="idEQ" />
+													<core:ListItem text="{objectView>/diferente}"
+														key="NE" id="idNE" />
+													<core:ListItem text="{objectView>/maior}"
+														key="GT" id="idGT" />
+													<core:ListItem text="{objectView>/maiorigual}"
+														key="GE" id="idGE" />
+													<core:ListItem text="{objectView>/menor}"
+														key="LE" id="idLE" />
+													<core:ListItem text="{objectView>/menorigual}"
+														key="LT" id="idLT" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Valor}">
+										<f:fields>
+											<Input width="150px" id="inFValor" editable="{objectView>/formEditable}"
+												fieldWidth="100%" textAlign="Begin" textDirection="LTR" />
+										</f:fields>
+									</f:FormElement>
+<!-- 									<f:FormElement label="{i18n>QtdReg}">
+										<f:fields>
+											<Input width="150px" id="inQtdReg" value="{RECORD_COUNT}"
+												editable="{objectView>/formEditable}" fieldWidth="100%"
+												textAlign="Begin" textDirection="LTR" />
+										</f:fields>
+									</f:FormElement> -->
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="__container3" width="100%">
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<OverflowToolbar id="otb1">
+												<Button text="AND" id="btnAND" press="onAND"
+													visible="{objectView>/formEditable}" />
+												<Button text="OR" id="btnOR" press="onOR"
+													visible="{objectView>/formEditable}" />
+												<Button text="(" id="btnPareAbre" press="onPareAbre"
+													visible="{objectView>/formEditable}" />
+												<Button text=")" id="btnPareFecha" press="onPareFecha"
+													visible="{objectView>/formEditable}" />
+												<Button text="+" id="btnMais" press="onMais"
+													visible="{objectView>/formEditable}" />
+												<Button text="-" id="btnMenos" press="onMenos"
+													visible="{objectView>/formEditable}" />
+												<Button text="*" id="btnVezes" press="onVezes"
+													visible="{objectView>/formEditable}" />
+												<Button text="/" id="btnDivide" press="onDivide"
+													visible="{objectView>/formEditable}" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<Button text="{i18n>Incluir}" id="btnAddCond" press="onAddFilter"
+													visible="{objectView>/formEditable}" icon="sap-icon://add-activity-2"
+													type="Transparent" />
+												<Button text="{i18n>Limpar}" id="btnClearCond" press="onClearFilter"
+													visible="{objectView>/formEditable}" icon="sap-icon://delete"
+													type="Transparent" />
+											</OverflowToolbar>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<TextArea id="inAFiltro" height="400%" textAlign="Begin"
+												editable="{objectView>/formEditable}" value="{RULE_WHERE}"
+												textDirection="LTR" width="550px" wrapping="Soft" rows="4" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<Panel id="panel2" headerText="{i18n>Ordenacao}" class="sapUiResponsiveMargin"
+				width="95%">
+				<content>
+					<f:Form id="FormToolbar2" editable="true" adjustLabelSpan="true"
+						columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container4" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Atributo}" class="sapUiSmallMargin">
+										<f:fields>
+											<!-- <ComboBox value="List Item 1" selectedKey="{COLUMN_NAME}" 
+												id="comboOAtributo" editable="{objectView>/formEditable}" width="250px" textAlign="Begin" 
+												textDirection="LTR" items="{ path: '/atributoFiltrosPoliticosOData', sorter: 
+												{path: 'COMMENTS', descending: false}}"> <items> <core:ListItem key="{COLUMN_NAME}" 
+												text="{COMMENTS}" /> </items> </ComboBox> -->
+											<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+												width="250px" id="inOAtributo" enableMultiLineMode="false"
+												showValueHelp="true" valueHelpRequest="onOAtributoHelp"
+												valueHelpOnly="true">
+											</MultiInput>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Tipo}">
+										<f:fields>
+											<ComboBox value="value1" selectedKey="item1"
+												selectedItemId="idDES1" id="comboOOper" editable="{objectView>/formEditable}"
+												width="100px" textAlign="Begin" textDirection="LTR">
+												<items>
+													<!-- <core:ListItem text="{objectView>/igual}" key="EQ" id="id1EQ" 
+														/> <core:ListItem text="{objectView>/diferente}" key="NE" id="id1NE" /> <core:ListItem 
+														text="{objectView>/maior}" key="GT" id="id1GT" /> <core:ListItem text="{objectView>/maiorigual}" 
+														key="GE" id="id1GE" /> <core:ListItem text="{objectView>/menor}" key="LE" 
+														id="id1LE" /> <core:ListItem text="{objectView>/menorigual}" key="LT" id="id1LT" 
+														/> -->
+													<core:ListItem text="{objectView>/asc}" key="ASC"
+														id="idDES1" />
+													<core:ListItem text="{objectView>/des}" key="DES"
+														id="idASC1" />
+												</items>
+											</ComboBox>
+											<!-- <ComboBox value="value1" selectedKey="item1" selectedItemId="idType" 
+												id="comboOOper" editable="{objectView>/formEditable}" width="120px" textAlign="Begin" 
+												textDirection="LTR"> <items> <core:ListItem text="{objectView>/asc}" key="ASC" 
+												id="idDES" /> <core:ListItem text="{objectView>/des}" key="DES" id="idASC" 
+												/> </items> </ComboBox> -->
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="__container5" width="100%">
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<OverflowToolbar id="otb2">
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<Button text="{i18n>Incluir}" id="btnAddOrder" press="onAddOrder"
+													visible="{objectView>/formEditable}" icon="sap-icon://add-activity-2"
+													type="Transparent" />
+												<Button text="{i18n>Limpar}" id="btnClearOrder"
+													press="onClearOrder" visible="{objectView>/formEditable}"
+													icon="sap-icon://delete" type="Transparent" />
+											</OverflowToolbar>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<TextArea id="inAOrder" height="400%" textAlign="Begin"
+												value="{RULE_ORDER}" editable="{objectView>/formEditable}"
+												textDirection="LTR" width="550px" wrapping="Soft" rows="4" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<Panel id="panel3" headerText="{i18n>Ranqueamento}" class="sapUiResponsiveMargin"
+				width="95%">
+				<content>
+
+					<f:Form id="FormToolbar3" editable="true" adjustLabelSpan="true"
+						columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container6" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Particionamento}"
+										class="sapUiSmallMargin">
+										<f:fields>
+<!-- 											<ComboBox value="List Item 1" selectedKey="{COLUMN_NAME}"
+												id="comboParticionamento" editable="{objectView>/formEditable}"
+												width="250px" textAlign="Begin" textDirection="LTR"
+												items="{ path: '/atributoFiltrosPoliticosOData', sorter: {path: 'COMMENTS', descending: false} }">
+												<items>
+													<core:ListItem key="{COLUMN_NAME}" text="{COMMENTS}" />
+												</items>
+											</ComboBox> -->
+											<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+												width="250px" id="inParticionamento" enableMultiLineMode="false"
+												showValueHelp="true" valueHelpRequest="onParticionamentoHelp"
+												valueHelpOnly="true">
+											</MultiInput>											
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Limite}">
+										<f:fields>
+											<Input width="150px" id="inLimite" value="{RANK_LIMITE}"
+												editable="{objectView>/formEditable}" fieldWidth="100%"
+												textAlign="Begin" textDirection="LTR" />
+										</f:fields>
+									</f:FormElement>									
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="__container7" width="100%">
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<OverflowToolbar id="otb3">
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<Button text="{i18n>Incluir}" id="btnAddPart" press="onAddPart"
+													visible="{objectView>/formEditable}" icon="sap-icon://add-activity-2"
+													type="Transparent" />
+												<Button text="{i18n>Limpar}" id="btnClearPart" press="onClearPart"
+													visible="{objectView>/formEditable}" icon="sap-icon://delete"
+													type="Transparent" />
+											</OverflowToolbar>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<TextArea id="inAPart" height="400%" textAlign="Begin"
+												value="{RANK_PARTITION}" editable="{objectView>/formEditable}"
+												textDirection="LTR" width="550px" wrapping="Soft" rows="4" />
+										</f:fields>
+									</f:FormElement>
+									
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+
+					<f:Form id="FormToolbar4" editable="true" adjustLabelSpan="true"
+						columnsM="2" width="100%">
+						<f:layout>
+							<f:ResponsiveGridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container8" width="100%">
+								<f:formElements>
+									<f:FormElement label="{i18n>Ordenacao}" class="sapUiSmallMargin">
+										<f:fields>
+<!-- 											<ComboBox value="List Item 1" selectedKey="{COLUMN_NAME}"
+												id="comboROrder" editable="{objectView>/formEditable}"
+												width="250px" textAlign="Begin" textDirection="LTR"
+												items="{ path: '/atributoFiltrosPoliticosOData' , sorter: {path: 'COMMENTS', descending: false} }">
+												<items>
+													<core:ListItem key="{COLUMN_NAME}" text="{COMMENTS}" />
+												</items>
+											</ComboBox> -->
+											<MultiInput xmlns="sap.m" editable="{objectView>/formEditable}"
+												width="250px" id="inOrder" enableMultiLineMode="false"
+												showValueHelp="true" valueHelpRequest="onOrderHelp"
+												valueHelpOnly="true">
+											</MultiInput>											
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>Tipo}">
+										<f:fields>
+											<ComboBox value="value1" selectedKey="item1"
+												selectedItemId="idType" id="comboType" editable="{objectView>/formEditable}"
+												width="120px" textAlign="Begin" textDirection="LTR">
+												<items>
+													<core:ListItem text="{objectView>/asc}" key="ASC"
+														id="idDES" />
+													<core:ListItem text="{objectView>/des}" key="DES"
+														id="idASC" />
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="__container9" width="100%">
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<OverflowToolbar id="otb4">
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<ToolbarSpacer class="sapUiResponsiveMargin" />
+												<Button text="{i18n>Incluir}" id="btnAddROrder"
+													press="onAddROrder" visible="{objectView>/formEditable}"
+													icon="sap-icon://add-activity-2" type="Transparent" />
+												<Button text="{i18n>Limpar}" id="btnClearROrder"
+													press="onClearROrder" visible="{objectView>/formEditable}"
+													icon="sap-icon://delete" type="Transparent" />
+											</OverflowToolbar>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<TextArea id="inAROrder" height="400%" textAlign="Begin"
+												value="{RANK_ORDER}" editable="{objectView>/formEditable}"
+												textDirection="LTR" width="550px" wrapping="Soft" rows="4" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+		</semantic:content>
+
+		<!--  BOTÕES RODAPÉ -->
+		<semantic:saveAction>
+			<semantic:SaveAction text="Salvar" id="idActionSave"
+				press="onGravar" visible="{objectView>/btSalvarVisible}" />
+		</semantic:saveAction>
+
+		<semantic:cancelAction>
+			<semantic:CancelAction text="Cancelar" id="idActionCancelar"
+				press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:cancelAction>
+
+		<semantic:mainAction>
+			<semantic:MainAction text="Modificar" id="idActionProcessar"
+				press="onProcessar" visible="{objectView>/btProcessarVisible}" />
+		</semantic:mainAction>
+		
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Excluir"
+				id="idActionApagar" press="onDeletar" visible="{objectView>/btApagarVisible}" />
+		</semantic:negativeAction>
+	</semantic:FullscreenPage>
+</mvc:View>

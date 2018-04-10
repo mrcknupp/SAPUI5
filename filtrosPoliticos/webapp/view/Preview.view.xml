@@ -1,0 +1,148 @@
+<mvc:View controllerName="com.cpfl.filtrospoliticos.controller.Preview" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>previewTitle}" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:content>
+			<Panel id="panel0" headerText="{i18n>DadosBasicos}" class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<FlexBox width="100%" id="flexbox0">
+						<items>
+							<HBox width="40%" id="hbox0" renderType="Bare" direction="Column" backgroundDesign="Solid">
+								<InputListItem label="{i18n>lbAcaoCobranca}" id="lbAcao" labelTextDirection="LTR">
+									<Input id="inAcao" width="250px" value="{ACTION_NAME}" editable="false" fieldWidth="100%" textAlign="Begin" textDirection="LTR" />
+								</InputListItem>
+							</HBox>
+							<HBox width="10%" id="hbox1" renderType="Bare" direction="Column" backgroundDesign="Solid">
+								<ToolbarSpacer />
+							</HBox>
+							<HBox width="40%" id="hbox10" renderType="Bare" direction="Column" backgroundDesign="Solid">
+								<InputListItem label="{i18n>lbEmpresa}" id="lbEmpresa" labelTextDirection="LTR">
+									<Input id="inEmpresa" width="250px" value="{BUTXT}" editable="false" fieldWidth="100%" textAlign="Begin" textDirection="LTR" />
+								</InputListItem>
+							</HBox>
+							<HBox width="10%" id="hbox11" renderType="Bare" direction="Column" backgroundDesign="Solid">
+								<ToolbarSpacer />
+							</HBox>
+						</items>
+					</FlexBox>
+				</content>
+			</Panel>
+			<Panel id="panel1" headerText="{i18n>Filtros}" class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<f:Form id="FormToolbar1" editable="true" adjustLabelSpan="true" columnsM="2" width="100%">
+						<f:layout>
+							<f:GridLayout />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="__container2" width="100%">
+								<f:formElements>
+									<f:FormElement class="sapUiSmallMargin">
+										<f:fields>
+											<TextArea id="inAFiltro" height="400%" textAlign="Begin" editable="false" value="{RULE_WHERE}" textDirection="LTR" width="1000px" wrapping="Soft" rows="6" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="{i18n>QtdReg}">
+										<f:fields>
+											<OverflowToolbar id="otb1">
+												<Input id="inQtdreg" width="60px" editable="true" value="100" fieldWidth="100%" textAlign="Begin" textDirection="LTR" />
+												<Input id="inspace0" width="25px" editable="false"/>
+												<RadioButton id="rbUf" fieldGroupIds="RB1" groupName="GroupRB1" selected="{objectView>/rbUf}" text="{i18n>uf}" editable="true" select="true" />
+												<RadioButton id="rbMunicipio" fieldGroupIds="RB1" groupName="GroupRB1" selected="{objectView>/rbMunicipio}" text="{i18n>Municipio}" editable="true" select="false" />
+												<RadioButton id="rbBairro" fieldGroupIds="RB1" groupName="GroupRB1" selected="{objectView>/rbBairro}" text="{i18n>Bairro}" editable="true" select="false" />
+												<Input id="inspace1" width="50px" editable="false"/>
+												<Button text="{i18n>btnExecutar}" id="idExecutar" press="onExecutar" type="Emphasized" />
+											</OverflowToolbar>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Table id="table1" width="auto" items="{ path: '/cData', sorter: { path: 'UF', descending: false }}" noDataText="{previewView>/tableNoDataText}" busyIndicatorDelay="{previewView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+												<columns>
+													<Column id="Cl00">
+														<Text text="{i18n>uf}" id="cl0uf" />
+													</Column>
+													<Column id="Cl01">
+														<Text text="{i18n>Municipio}" id="cl0Municipio" />
+													</Column>
+													<Column id="Cl02">
+														<Text text="{i18n>Bairro}" id="cl0Bairro" />
+													</Column>
+													<Column id="Cl03">
+														<Text text="{i18n>qdtconta}" id="cl0Qtdconta" />
+													</Column>
+													<Column id="Cl04">
+														<Text text="{i18n>valor}" id="cl0Valor" />
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<ObjectAttribute text="{UF}" />
+															<ObjectAttribute text="{CIDADE}" />
+															<ObjectAttribute text="{BAIRRO}" />
+															<ObjectAttribute text="{COUNT_VKONT}" />
+															<ObjectAttribute text="{BETRW}" />
+														</cells>
+													</ColumnListItem>
+												</items>
+ 											</Table>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Panel>
+			<Panel id="panel2" headerText="{i18n>Detalhamento}" class="sapUiResponsiveMargin" width="95%">
+				<content>
+					<Table id="table2" width="auto" items="{ path: '/dData', sorter: { path: 'VKONT', descending: false }}" noDataText="{previewView>/tableNoDataText}" busyIndicatorDelay="{previewView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+
+						<columns>
+							<Column id="Cl10">
+								<Text text="{i18n>ContaContrato}" id="cl1CtaContrato" />
+							</Column>
+							<Column id="Cl11">
+								<Text text="{i18n>uf}" id="cl1UF" />
+							</Column>
+							<Column id="C1l2">
+								<Text text="{i18n>Cidade}" id="cl1Cidade" />
+							</Column>
+							<Column id="Cl13">
+								<Text text="{i18n>Bairro}" id="cl1Bairro" />
+							</Column>
+							<Column id="Cl14">
+								<Text text="{i18n>Classe}" id="cl1Classe" />
+							</Column>
+							<Column id="Cl15">
+								<Text text="{i18n>Fatura}" id="cl1Fatura" />
+							</Column>
+							<Column id="Cl16">
+								<Text text="{i18n>Valor}" id="cl1Valor" />
+							</Column>
+						</columns>
+
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectAttribute text="{VKONT}" />
+									<ObjectAttribute text="{UF}" />
+									<ObjectAttribute text="{CIDADE}" />
+									<ObjectAttribute text="{BAIRRO}" />
+									<ObjectAttribute text="{CLASSE}" />
+									<ObjectAttribute text="{DOCUMENTO}" />
+									<ObjectAttribute text="{BETRW}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</semantic:content>
+
+		<semantic:customFooterContent>
+			<Button text="{i18n>btnCancelar}" id="idActionCancelar" press="onCancelar" visible="{objectView>/btCancelarVisible}" />
+		</semantic:customFooterContent>
+	</semantic:FullscreenPage>
+
+</mvc:View>
